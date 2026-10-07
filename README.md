@@ -39,7 +39,7 @@
 
 ## What This Does
 
-<!-- Three or four sentences: what a user asks for, and what they get back. -->
+You type what you want in plain language, for example `vintage graphic tee under $30, size M`. FitFindr searches 40 mock thrift listings, picks the best match, and suggests one or two outfits that combine it with pieces from your wardrobe. It then writes a short social-media caption (a fit card) about the find. If nothing matches, it stops and tells you what to change, such as raising the price limit, dropping the size, or using different keywords, instead of making up an outfit.
 
 
 
@@ -227,15 +227,15 @@ Found my new holy grail pair of vintage Levi's 501 jeans on Depop for just $38. 
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I gave Claude my Tool Inventory spec for `search_listings` (keyword overlap, whole-token size matching, empty list on no match) and asked it to implement the tool in `tools.py`.
+- *What came back:* It worked on the spec's cases: `S` returned `S` and `S/M` but no `US 9` shoes, and an impossible query returned `[]`. But for `'graphic tee'` it ranked "Y2K Baby Tee" above "Graphic Tee — 2003 Tour Bootleg Style", because both scored 2 and ties kept data-file order.
+- *What I changed:* I added a tie-break on how many keywords appear in the title, so the "Graphic Tee" listing now comes first, and I updated the scoring line in the Tool Inventory so the spec matches the code. I also ignore filler words (`under`, `size`, `looking`) so they can't score matches, and wrote that into the spec.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I asked Claude to build `run_agent` so it follows my branch rule and reads each tool's input back out of the session instead of passing values along.
+- *What came back:* It gave me a loop that picks the next tool from session state, with the empty-search branch returning before `suggest_outfit`. Separately, its first write of `tools.py` turned the `n` escapes inside the prompt strings into real line breaks, which gave a `SyntaxError` the first time the module was imported.
+- *What I changed:* I didn't take the loop on trust: I ran it with the model stubbed and confirmed the same object in `session["selected_item"]` reached both `suggest_outfit` and `create_fit_card`, and that the empty path left `fit_card` as None. The broken string literals were repaired and the import re-run until it compiled, and I kept the no-results message naming only the filters the user actually set (price, size, keywords).
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
