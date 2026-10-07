@@ -59,24 +59,26 @@
 
 ### `search_listings`
 
-- **What it does:**
-- **Inputs:** <!-- name and type each: `max_price` (float), not "a price" -->
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Searches the 40 mock listings for items whose text matches the user's keywords, optionally narrowed by size and a price ceiling, and ranks them best match first. It does not call the model.
+- **Inputs:** `description` (str) — keywords such as "vintage graphic tee"; `size` (str or None) — a size to match, None skips size filtering; `max_price` (float or None) — inclusive ceiling, None skips price filtering.
+  - *Size match rule:* compare case-insensitively after deleting any parenthetical (so "XL (oversized)" becomes "XL"), splitting on `/` ("S/M" becomes "S" and "M"), and splitting on whitespace ("W30 L30" becomes "W30" and "L30"). A listing matches when the requested size equals one of those whole tokens. "M" matches "M", "S/M" and "M/L"; "S" matches "S" and "S/M" but never "US 9" or "XL"; "L" matches "L", "L/XL" and "W30 L30" but never "XL".
+  - *Score:* the number of distinct lowercase words in `description` that appear as whole words in a listing's title, description, category, style_tags, colors and brand. Listings scoring 0 are dropped. Ties keep their order in the data file.
+- **Returns:** A `list[dict]` of at most `config.SEARCH_RESULT_LIMIT` (10) listing dicts, highest score first. Each dict has `id` (str), `title` (str), `description` (str), `category` (str: tops, bottoms, outerwear, shoes or accessories), `style_tags` (list[str]), `size` (str), `condition` (str: excellent, good or fair), `price` (float), `colors` (list[str]), `brand` (str or None; None for most listings) and `platform` (str: depop, thredUp or poshmark). The dicts are the unmodified listing records.
+- **When it has nothing:** Returns an empty list `[]` — never None, never an exception. This covers no keyword match, every match filtered out by size or price, and a blank `description`.
 
 ### `suggest_outfit`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Asks the model for one or two outfits built around the thrifted item, naming pieces from the user's wardrobe when there are any.
+- **Inputs:** `new_item` (dict) — one listing dict as returned by `search_listings`, using its `title`, `category`, `colors`, `style_tags` and `price`; `wardrobe` (dict) — has an `items` key holding a list[dict], each with `id`, `name`, `category`, `colors`, `style_tags` and `notes` (str or None). `items` may be an empty list.
+- **Returns:** A non-empty `str` of plain text. With a populated wardrobe it describes one or two outfits that name specific wardrobe items by their `name`. With an empty wardrobe it gives general styling advice for the item and names no owned pieces.
+- **When it has nothing:** An empty wardrobe is not a failure: it returns the general-advice string above, so the result is still non-empty. It never returns `""` or None and does not raise on an empty `items` list. If the model call fails, `generate.ModelUnavailable` is allowed to propagate and the loop handles it.
 
 ### `create_fit_card`
 
-- **What it does:**
-- **Inputs:**
-- **Returns:**
-- **When it has nothing:**
+- **What it does:** Asks the model for a short social-media caption about the find, built from the outfit text and the item's details.
+- **Inputs:** `outfit` (str) — the string returned by `suggest_outfit`; `new_item` (dict) — the same listing dict, using its `title`, `price` (float) and `platform` (str).
+- **Returns:** A `str` of two to four sentences, written like a post rather than a product description. It mentions the item, its price and its platform once each, and is specific about the vibe. Different inputs, or repeated calls, give different wording, which depends on `config.CACHE_ENABLED` and `config.TEMPERATURE`.
+- **When it has nothing:** If `outfit` is `""` or whitespace only, it makes no model call and returns the message `"No outfit to write a caption for — run suggest_outfit first."` (a non-empty str). It does not raise.
 
 ---
 
@@ -93,7 +95,7 @@
      The grader checks your code against what you claim here, so the file and
      function have to be real. -->
 
-**Branch rule:**
+**Branch rule:** If `search_listings` returns an empty list, put a message in `session["error"]` that tells the user what to change (loosen the price, drop the size, or use fewer or different keywords), return the session, and do not call `suggest_outfit` or `create_fit_card`, so `outfit_suggestion` and `fit_card` stay None. Otherwise, put the first result in `session["selected_item"]` and go to `suggest_outfit`, then `create_fit_card` with its output.
 
 **Where it lives:** `agent.py::run_agent`
 
