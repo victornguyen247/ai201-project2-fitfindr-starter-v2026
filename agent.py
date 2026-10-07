@@ -13,6 +13,8 @@ Build and test your three tools in `tools.py` first. Then come here.
     python agent.py          runs both example paths below
 """
 
+import re
+
 import config
 import trace
 from tools import search_listings, suggest_outfit, create_fit_card
@@ -43,6 +45,7 @@ def new_session(query: str, wardrobe: dict) -> dict:
         "wardrobe": wardrobe,        # the user's wardrobe
         "outfit_suggestion": None,   # what suggest_outfit returned
         "fit_card": None,            # what create_fit_card returned
+        "searched": False,           # has search_listings been called yet?
         "error": None,               # set when the run ended early
     }
 
@@ -106,10 +109,84 @@ def run_agent(query: str, wardrobe: dict) -> dict:
         than a stack trace. The import is already at the top of this file.
     """
     session = new_session(query, wardrobe)
+    session["parsed"] = parse_query(query)
 
-    # TODO: delete these two lines and build the loop.
-    session["error"] = "The planning loop isn't built yet — see the TODO in agent.py."
-    return session
+    # Each pass looks at the session, picks the next tool, runs it, and writes
+    # the result back. The next pass reads what the last one wrote.
+    count = 0
+    while True:
+        count += 1
+        trace.check_iterations(count)
+
+        if not session["search_results"] and not session["searched"]:
+            parsed = session["parsed"]
+            session["search_results"] = search_listings(
+                description=parsed["description"],
+                size=parsed["size"],
+                max_price=parsed["max_price"],
+            )
+            session["searched"] = True
+
+        elif not session["search_results"]:
+            # THE BRANCH: search came back empty. Say what to change and stop.
+            # suggest_outfit and create_fit_card are never called.
+            session["error"] = _no_results_message(session["parsed"])
+            return session
+
+        elif session["selected_item"] is None:
+            session["selected_item"] = session["search_results"][0]
+
+        elif session["outfit_suggestion"] is None:
+            session["outfit_suggestion"] = suggest_outfit(
+                session["selected_item"], session["wardrobe"]
+            )
+
+        elif session["fit_card"] is None:
+            session["fit_card"] = create_fit_card(
+                session["outfit_suggestion"], session["selected_item"]
+            )
+
+        else:
+            return session
+
+
+def parse_query(query: str) -> dict:
+    """
+    Pull a description, a size and a max_price out of plain language, with
+    regular expressions (no model call). "vintage graphic tee under $30, size M"
+    becomes description "vintage graphic tee", size "M", max_price 30.0.
+    """
+    text = query
+
+    max_price = None
+    match = (
+        re.search(r"(?:under|below|less than|up to|max(?:imum)?|at most|<=?)\s*\$?\s*(\d+(?:\.\d+)?)", text, re.I)
+        or re.search(r"\$\s*(\d+(?:\.\d+)?)", text)
+    )
+    if match:
+        max_price = float(match.group(1))
+        text = text[: match.start()] + " " + text[match.end():]
+
+    size = None
+    match = re.search(r"\bsize\s+([A-Za-z0-9/]+(?:\s+L\d+)?)", text, re.I)
+    if match:
+        size = match.group(1).strip()
+        text = text[: match.start()] + " " + text[match.end():]
+
+    description = re.sub(r"[,.;]+", " ", text)
+    description = re.sub(r"\s+", " ", description).strip()
+    return {"description": description, "size": size, "max_price": max_price}
+
+
+def _no_results_message(parsed: dict) -> str:
+    """Name the specific things the user could change."""
+    tips = []
+    if parsed.get("max_price") is not None:
+        tips.append(f"raise the price limit above ${parsed['max_price']:.0f}")
+    if parsed.get("size"):
+        tips.append(f"drop the size filter (size {parsed['size']})")
+    tips.append(f"try fewer or different keywords than \"{parsed['description']}\"")
+    return "Nothing matched your search. You could " + ", ".join(tips[:-1]) + (", or " if len(tips) > 1 else "") + tips[-1] + "."
 
 
 # ── running it directly ───────────────────────────────────────────────────────

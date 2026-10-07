@@ -99,9 +99,9 @@
 
 **Where it lives:** `agent.py::run_agent`
 
-**How the query is parsed:** <!-- regex, string splitting, or asking the model — say which -->
+**How the query is parsed:** regular expressions, with no model call (`agent.py::parse_query`). A price comes from `under`, `below`, `less than`, `up to`, `max` or a bare `$N`. A size comes from `size X`, and may include a waist/length pair like `W30 L30`. What is left, minus punctuation, is the description. `'vintage graphic tee under $30, size M'` becomes description `vintage graphic tee`, size `M`, max_price `30.0`.
 
-**What moves through the session:** <!-- which fields, in what order -->
+**What moves through the session:** `query` -> `parsed` -> `search_results` (and `searched`, set to True once the search has run) -> `selected_item` -> `outfit_suggestion` -> `fit_card`; `error` is set only when the run stops early. `run_agent` is a loop. Each pass reads the session to decide which one tool to run next, runs it, writes the result back and goes round again. `suggest_outfit` is called with `session['selected_item']` and `create_fit_card` with `session['outfit_suggestion']` and `session['selected_item']`, never with a local variable. `trace.check_iterations` is called on every pass.
 
 ---
 
@@ -146,8 +146,27 @@ Absolute perfection for under forty bucks. Scored these vintage Levi's 501 jeans
 Absolute perfection for under forty bucks. Scored these vintage Levi's 501 jeans on Depop for just $38 and the wash is honestly unmatched. Paired them with crisp white sneakers for that effortlessly cool, running-errands-all-day energy.
 
 ```
-$ python app.py ask '...'
-The planning loop isn't built yet — see the TODO in agent.py.
+$ python app.py ask 'vintage graphic tee under $30'
+Found:    Graphic Tee — 2003 Tour Bootleg Style — $24.0 on depop
+
+  Outfit:   Hey! That 2003 tour bootleg tee is a fantastic, grunge-ready find. Here is how you can style it with pieces you already own:
+
+**Outfit 1: Effortless Streetwear**
+Pair the graphic tee with your baggy straight-leg jeans, dark wash. Cinch the waist with the brown leather belt, and layer the slightly cropped vintage black denim jacket on top. Finish the look with your black combat boots and the black crossbody bag for an edgy, everyday vibe. 
+
+**Outfit 2: Contrast Grunge**
+Tuck the tee into your wide-leg khaki trousers. Throw on your black cropped zip hoodie unzipped over it, and step into your chunky white sneakers for a cool, balanced mix of slouchy and structured.
+
+  Fit card: Scored this 2003 tour bootleg tee on Depop for just $24 and it's officially my new personality. Threw it on with baggy denim and combat boots for the ultimate effortless grunge look. Honestly, nothing beats a good thrift win.
+
+0 model calls this session, 2 served from cache
+```
+
+The empty path (`python agent.py`, second example):
+
+```
+  stopped: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than "designer ballgown".
+  fit_card is None, as it should be
 ```
 
 **The three tools, tested one at a time**
@@ -158,14 +177,42 @@ $ python -c "from tools import search_listings; print(search_listings('graphic t
 ```
 
 ```
-$ python -c "from tools import suggest_outfit; ..."
+$ python -c "from tools import suggest_outfit; from utils.data_loader import get_example_wardrobe, load_listings; print(suggest_outfit(load_listings()[0], get_example_wardrobe()))"
+Hey friend! Those vintage Levi's 501s are an absolute holy grail find—that medium wash is so versatile! Since they’re a classic straight fit, let’s play with proportions using what you already have.
 
+**Look 1: Casual Streetwear**
+Tuck in your **White ribbed tank top**, loop your **Brown leather belt** through the waist, and layer on your **Oversized grey crewneck sweatshirt**. Finish with your **Chunky white sneakers** and **Black crossbody bag**. It’s effortlessly cool!
+
+**Look 2: Edgy & Cropped**
+Wear your **White ribbed tank top** under the **Black cropped zip hoodie**, and top it off with your **Vintage black denim jacket**. Rock them with your **Black combat boots** for a killer downtown vibe. 
+
+You're going to wear these out!
+```
+
+With an empty wardrobe (`get_empty_wardrobe()` in place of the example one):
+
+```
+Hey there! Those vintage 501s are absolute gold. Since I don't know your closet yet, let's build two effortless looks with basics you likely already own!
+
+**1. The Off-Duty Cool Look (Streetwear Vibe):**
+Pair the jeans with an oversized, thrifted grey crewneck sweatshirt. Tuck the front in slightly and add crisp white leather sneakers. Accessorize with a simple black belt and a silver chain necklace. It’s comfy, classic, and instantly chic.
+
+**2. The Timeless Coffee Run (Casual Classic):**
+Tuck a fitted plain black or white baby tee into the waistband. Layer an unbuttoned oversized white linen button-down over top. Slip on some retro canvas sneakers (like Converse or Vans) and toss a canvas tote bag over your shoulder. 
+
+How do those sound for starters?
 ```
 
 ```
-$ python -c "from tools import create_fit_card; ..."
+$ AI201_CACHE=0 python -c "from tools import create_fit_card; from utils.data_loader import load_listings; i=load_listings()[0]; [print(create_fit_card('jeans and white sneakers', i)) for _ in range(3)]"
+The hunt is finally over. Snagged these vintage Levi's 501 jeans on Depop for $38 and they fit like an absolute dream. Paired them with crisp white sneakers for that effortlessly cool 90s off-duty look.
 
+Found my new favorite pair of vintage Levi's 501 jeans on Depop for just $38. Threw them on with fresh white sneakers for that effortlessly lived-in, 90s off-duty look. Honestly not taking these off anytime soon.
+
+Found my new holy grail pair of vintage Levi's 501 jeans on Depop for just $38. They’ve got that perfectly broken-in medium wash and fit like an absolute dream. Honestly can't wait to wear these on repeat with crisp white sneakers and an oversized tee.
 ```
+
+(Three runs on the same item with the cache off; the wording differs each time.)
 
 ---
 
