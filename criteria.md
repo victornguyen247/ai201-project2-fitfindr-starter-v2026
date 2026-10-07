@@ -25,9 +25,12 @@ Given a query that matches at least one listing, the agent completes all three
 tool calls and returns a fit card — in at least 4 of 5 tries.
 
 **Why this target:**
-<!-- Why 4 of 5 and not 5 of 5? Something about your search, probably —
-     "my search is a plain keyword match and some phrasings will miss" is a
-     real answer. -->
+I picked 4 of 5 and not 5 of 5 because `search_listings` is a plain keyword
+match with no synonyms, so a phrasing like "t-shirt" can miss a listing titled
+"tee" and return nothing even though a human would call it a match. Two of the
+three tools also call a model, which can fail or time out on any given try.
+Allowing one miss in five covers those two causes without letting the happy
+path be unreliable.
 
 ---
 
@@ -37,66 +40,67 @@ Given a query that matches no listings, the agent stops before calling
 `suggest_outfit` and returns a message naming what to change — 5 of 5 tries.
 
 **Why this target:**
-<!-- Why is 5 of 5 reasonable here when criterion 1 isn't? What's different
-     about this path? -->
+5 of 5 because this path has no model in it. `search_listings` returns an
+empty list for a query like "designer ballgown size XXS under $5", and the
+branch in `run_agent` is a plain `if not results` check, so the outcome is the
+same every time. If it fails even once, the branch itself is wrong, not unlucky.
+The message must tell the user what to change (loosen the price, drop the size,
+use other keywords). A bare "No results" does not count.
 
 ---
 
 ## 3. Something about state
 
-<!-- YOU WRITE THIS ONE.
-
-     How would you know that the item your search found is the same item the
-     next tool received? Name something countable or observable.
-
-     This is the criterion people find hardest, because state failure doesn't
-     look like state failure — it looks like a tool problem. Something that
-     compares session["selected_item"] against what actually reached
-     suggest_outfit is the shape you're after. -->
-
-
+In 5 of 5 runs of a matching query, the `id` of the item that reaches
+`suggest_outfit` equals `session["selected_item"]["id"]`, which equals
+`search_results[0]["id"]`, and the item that reaches `create_fit_card` has that
+same `id`. I check it by wrapping the two tools to record the `id` they receive
+and comparing the three values after each run. The fit card must also name the
+selected item's title or price, not some other listing's.
 
 **Why this target:**
-
-
+5 of 5 because passing state between tools is ordinary code with no model
+choosing anything. The loop either reads the item back out of the session or it
+doesn't, so a single mismatch means a bug such as a stale variable or
+`search_results[1]` used by mistake. A state bug looks like a bad outfit or
+caption, so I compare ids directly instead of reading the output and guessing.
 
 ---
 
 ## 4. Something about the fit card
 
-<!-- YOU WRITE THIS ONE.
-
-     The fit card calls a model, so the same input can produce different words
-     each time. That's not a bug — it's the nature of the tool. So what would
-     make it acceptable?
-
-     Think about what you'd actually be unhappy to see. A caption that never
-     mentions the price? Two different items producing the same opening
-     sentence? A card longer than a caption anyone would post? Any of those can
-     be turned into a number. -->
-
-
+For 5 different items, at least 4 of the 5 fit cards each (a) are 2 to 4
+sentences long, (b) contain the item's price (for example "$24"), and (c)
+contain its platform name (depop, thredUp or poshmark). Across the 5 cards, no
+two share the same first sentence.
 
 **Why this target:**
-
-
+The wording will vary, since the card comes from a model, so I score what has
+to be true of every card instead of exact text. The 4 of 5 allows for the
+sentence count, because the model sometimes writes a fifth sentence or a very
+short one, and a splitter that counts on periods can be off by one. The
+distinct-opening rule has no slack because a template-like opener on every card
+is the failure I'd dislike most, and it points at `CACHE_ENABLED` or
+`TEMPERATURE` in `config.py`.
 
 ---
 
 ## 5. Your choice
 
-<!-- YOU WRITE THIS ONE TOO.
-
-     Pick something you actually care about getting right. Speed, the empty
-     wardrobe path, what happens when the model can't be reached, whether the
-     search respects a price ceiling — anything, as long as it names a number
-     or an observable outcome. -->
-
-
+For 5 queries that each include a `max_price` and a `size`, every listing in
+`search_results` has `price <= max_price` and a size that matches the request
+under the Tool Inventory rule, in 5 of 5 queries with zero violating listings.
+At least one of the 5 queries asks for a single-letter size ("S" or "L") so the
+substring trap is exercised: no `US 9` shoe and no `XL` item may come back for
+a request for `S` or `L`.
 
 **Why this target:**
-
-
+5 of 5 and zero violations because filtering is deterministic code. One wrong
+listing is a bug, not variation, and a price ceiling the user typed is a hard
+limit. I chose this one because `"s" in "us 9"` is true, so a naive size test
+returns shoes for a small top and the search looks broken even though the
+keyword scoring is fine. A target I could miss is the point, and this is where
+my first draft is most likely to slip.
 
 ---
 
