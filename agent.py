@@ -111,6 +111,7 @@ def run_agent(query: str, wardrobe: dict) -> dict:
     """
     session = new_session(query, wardrobe)
     session["parsed"] = parse_query(query)
+    trace.step("parse_query", inputs={"query": query}, returned=session["parsed"])
 
     # Each pass looks at the session, picks the next tool, runs it, and writes
     # the result back. The next pass reads what the last one wrote.
@@ -127,25 +128,47 @@ def run_agent(query: str, wardrobe: dict) -> dict:
                 "max_price": parsed["max_price"],
             })
             session["searched"] = True
-
+            trace.step("search_listings (Via MCP)", inputs={"description": session["parsed"]["description"], "size": session["parsed"]["size"], "max_price": session["parsed"]["max_price"]}, returned=session["search_results"])
         elif not session["search_results"]:
             # THE BRANCH: search came back empty. Say what to change and stop.
             # suggest_outfit and create_fit_card are never called.
             session["error"] = _no_results_message(session["parsed"])
+            trace.step("branch: search empty",
+                       inputs=session["parsed"],
+                       returned=session["error"],
+                       note="suggest_outfit and create_fit_card not called")
             return session
 
         elif session["selected_item"] is None:
             session["selected_item"] = session["search_results"][0]
+            trace.step("selected_item", inputs={"search_results": session["search_results"]}, returned=session["selected_item"])
 
         elif session["outfit_suggestion"] is None:
-            session["outfit_suggestion"] = suggest_outfit(
-                session["selected_item"], session["wardrobe"]
-            )
+            try:
+                session["outfit_suggestion"] = suggest_outfit(
+                    session["selected_item"], session["wardrobe"]
+                )
+                trace.step("suggest_outfit", inputs={"selected_item": session["selected_item"], "wardrobe": session["wardrobe"]}, returned=session["outfit_suggestion"])
+            except ModelUnavailable as exc:
+                session["error"] = (
+                    "I found an item, but couldn't reach the styling model "
+                    f"({exc}). Check GEMINI_API_KEY in .env or your connection, then try again."
+                )
+                trace.step("suggest_outfit", note="ModelUnavailable, stopping")
+                return session
 
         elif session["fit_card"] is None:
-            session["fit_card"] = create_fit_card(
-                session["outfit_suggestion"], session["selected_item"]
-            )
+            try :
+                session["fit_card"] = create_fit_card(
+                    session["outfit_suggestion"], session["selected_item"])
+                trace.step("create_fit_card", inputs={"outfit_suggestion": session["outfit_suggestion"], "selected_item": session["selected_item"]}, returned=session["fit_card"])
+            except ModelUnavailable as exc:
+                session["error"] = (
+                    "I found an outfit, but couldn't reach the caption model "
+                    f"({exc}). Check GEMINI_API_KEY in .env or your connection, then try again."
+                )
+                trace.step("create_fit_card", note="ModelUnavailable, stopping")
+                return session
 
         else:
             return session

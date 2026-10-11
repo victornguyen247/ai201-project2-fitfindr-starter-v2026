@@ -319,12 +319,59 @@ that produced it:
 **Happy path**
 
 ```
+python app.py ask 'I have a Straight Leg Black Jeans, what should i pair with them?' --trace
+[1] parse_query
+      in:  dict with keys: query
+      out: dict with keys: description, size, max_price
+[2] search_listings (Via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Straight Leg Black Jeans — Faded, Straight Leg Khaki Trousers — Olive, Vintage Levi's 501 Jeans — Medium Wash … +7 more
+[3] selected_item
+      in:  dict with keys: search_results
+      out: Straight Leg Black Jeans — Faded ($30.0, thredUp)
+[4] suggest_outfit
+      in:  dict with keys: selected_item, wardrobe
+      out: Hey there! Those faded black Levi’s are an absolute thrift find—you *need* them. Since you already love baggy …
+[5] create_fit_card
+      in:  dict with keys: outfit_suggestion, selected_item
+      out: Scored these perfectly faded black Levi's on thredUp for just $30. They have that exact broken-in, 90s grunge …
+
+  Found:    Straight Leg Black Jeans — Faded — $30.0 on thredUp
+
+  Outfit:   Hey there! Those faded black Levi’s are an absolute thrift find—you *need* them. Since you already love baggy jeans, this straight-leg fit will give you that effortlessly cool vintage look while mixing up your silhouettes. 
+
+Here are two ways to style them using pieces right from your closet:
+
+**Outfit 1 (Grunge-Off-Duty):** 
+Pair the jeans with the **White ribbed tank top** tucked in, topped with the **Vintage black denim jacket**. Slip into your **Black combat boots** and toss on the **Black crossbody bag**. Instant 90s icon vibes.
+
+**Outfit 2 (Cozy Contrast):** 
+Layer the **Oversized grey crewneck sweatshirt** over the jeans for that slouchy, lived-in feel. Finish it with your **Chunky white sneakers** for a fresh, casual look.
+
+  Fit card: Scored these perfectly faded black Levi's on thredUp for just $30. They have that exact broken-in, 90s grunge look I've been hunting for. Can't wait to live in these with an oversized sweatshirt and chunky sneakers all fall.
+
+2 model calls this session, 574 prompt + 238 output tokens
 
 ```
 
 **Empty search**
 
 ```
+ython app.py ask 'does backpack under 50$?' --trace
+[1] parse_query
+      in:  dict with keys: query
+      out: dict with keys: description, size, max_price
+[2] search_listings (Via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: search empty
+      in:  dict with keys: description, size, max_price
+      out: Nothing matched your search. You could raise the price limit above $50, or try fewer or different keywords tha…
+      →    suggest_outfit and create_fit_card not called
+
+  Nothing matched your search. You could raise the price limit above $50, or try fewer or different keywords than "does backpack $?".
+
+0 model calls this session
 
 ```
 
