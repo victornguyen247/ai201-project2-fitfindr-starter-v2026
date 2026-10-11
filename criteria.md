@@ -83,6 +83,18 @@ distinct-opening rule has no slack because a template-like opener on every card
 is the failure I'd dislike most, and it points at `CACHE_ENABLED` or
 `TEMPERATURE` in `config.py`.
 
+> **Revised in unit 4:** For one item (`"y2k baby tee under $20"`, which
+> returns `lst_002`, $18, depop), run 5 times, at least 4 of the 5 fit cards
+> each (a) are 2 to 4 sentences long, (b) contain the price "$18", and (c)
+> contain the platform name "depop". Across the 5 cards, no two share the same
+> first sentence.
+>
+> **Why revised:** the original used 5 different items, which meant 5 queries
+> and 25 runs. Running the same item five times is what the 5 tries already
+> do, and it is a stricter test of the distinct-opening rule, because the
+> input is identical and only the model's variation can make the openings
+> differ. The 4-of-5 target and the distinct-first-sentence rule are unchanged.
+
 ---
 
 ## 5. Your choice
@@ -101,6 +113,17 @@ limit. I chose this one because `"s" in "us 9"` is true, so a naive size test
 returns shoes for a small top and the search looks broken even though the
 keyword scoring is fine. A target I could miss is the point, and this is where
 my first draft is most likely to slip.
+
+> **Revised in unit 4:** For the query `"vintage size L under $45"`, run 5
+> times, every listing in `search_results` has `price <= 45` and a size that
+> matches `L` as a whole token (`L`, `M/L`, `L/XL`), with zero violating
+> listings in 5 of 5 tries. No `XL` item and no `US` shoe may come back.
+>
+> **Why revised:** the original needed 5 different queries, which means 5
+> separate agent runs per try and 25 model-backed runs for one criterion. One
+> query that returns several listings and uses a single-letter size still
+> exercises the substring trap, and the 5 tries match the "5 of 5" scoring of
+> every other criterion. The target (5 of 5, zero violations) is unchanged.
 
 ---
 

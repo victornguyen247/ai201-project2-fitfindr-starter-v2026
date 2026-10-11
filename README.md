@@ -257,17 +257,104 @@ Found my new holy grail pair of vintage Levi's 501 jeans on Depop for just $38. 
 
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. Full three-tool run returns a fit card (`vintage graphic tee under $30`) | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. Empty search stops before tool 2 (`designer ballgown size XXS under $5`) | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. Item in session matches item passed on (`denim jacket under $50`) | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card for one item: 2-4 sentences, price, platform, distinct openers (`y2k baby tee under $20`) | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Price and size filter holds (`vintage size L under $45`) | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+
+Run: `python run_eval.py --label before`, 5 scenarios x 5 tries, caching off,
+temperature 0.9. Full output: `results/run_2026-10-11_1651_before.md`.
+Criteria 4 and 5 use the revised wording in `criteria.md` (one item / one query
+instead of five).
+
+**How each try was scored**
+
+- 1: `session["error"]` is None, trace has all of `search_listings`, `suggest_outfit`, `create_fit_card`, and a fit card came back. 5/5.
+- 2: trace ends at `branch: search empty`, with no `suggest_outfit` or `create_fit_card` step, and the message names what to change. 5/5.
+- 3: in every try, the trace's `selected_item` is the first title in the `search_listings` output (`Denim Jacket — Light Wash, Cropped`), and the fit card names the jacket and `$42`. This compares **titles, not ids**: the run log doesn't record ids. `search_listings` is deterministic and returns `lst_007` first for this query.
+- 4: scored by script on the five cards. Each has 3 sentences, contains `$18` and `Depop`, and all five first sentences are different strings.
+- 5: `search_listings("vintage", "L", 45.0)` re-run directly (deterministic, no model). It returns 5 listings (`lst_010`, `lst_015`, `lst_018`, `lst_033`, `lst_006`). All have price <= 45 and sizes `L` or `M/L`, with no `XL` and no `US` shoe. The trace shows 5 items in all five tries.
 
 **Real output from one try**, pasted as text, naming the file and function
 that produced it:
 
+**Criterion 1** — `agent.py::run_agent` (trace) and `tools.py::create_fit_card` (card), try 1:
+
+```
+[1] parse_query
+      in:  dict with keys: query
+      out: dict with keys: description, size, max_price
+[2] search_listings (Via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+[3] selected_item
+      in:  dict with keys: search_results
+      out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+[4] suggest_outfit
+      in:  dict with keys: selected_item, wardrobe
+      out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s got that perfect lived-in grunge vibe. Since i…
+[5] create_fit_card
+      in:  dict with keys: outfit_suggestion, selected_item
+      out: Scored this 2003 tour bootleg tee on Depop for $24 and it has the absolute best lived-in grunge vibe. Finally …
+
+Fit card:
+Scored this 2003 tour bootleg tee on Depop for $24 and it has the absolute best lived-in grunge vibe. Finally found a piece that looks genuinely vintage without trying too hard. Can't wait to live in this oversized fit all fall.
 ```
 
+**Criterion 2** — `agent.py::run_agent` (branch) and `agent.py::_no_results_message` (message), try 1:
+
+```
+[2] search_listings (Via MCP)
+      in:  dict with keys: description, size, max_price
+      out: [] (empty)
+[3] branch: search empty
+      in:  dict with keys: description, size, max_price
+      out: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try…
+      →    suggest_outfit and create_fit_card not called
+
+session["error"]:
+Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than "designer ballgown".
+```
+
+**Criterion 3** — `agent.py::run_agent`, try 1 (`selected_item` step, then the two tools that read it):
+
+```
+[2] search_listings (Via MCP)
+      out: 7 items: Denim Jacket — Light Wash, Cropped, 90s Track Jacket — Navy/White Stripe, High-Waisted Denim Shorts — Cutoff … +4 more
+[3] selected_item
+      in:  dict with keys: search_results
+      out: Denim Jacket — Light Wash, Cropped ($42.0, poshmark)
+[4] suggest_outfit
+      in:  dict with keys: selected_item, wardrobe
+      out: Hey friend! That cropped Wrangler denim jacket is an absolute vintage gem—it’ll add such a cool, classic textu…
+[5] create_fit_card
+      in:  dict with keys: outfit_suggestion, selected_item
+      out: Scored this cropped vintage Wrangler jacket on Poshmark for $42 and I'm honestly obsessed. The light wash give…
+```
+
+**Criterion 4** — `tools.py::create_fit_card`, all five tries for `y2k baby tee under $20` (`lst_002`, $18, depop):
+
+```
+1: Scored this butterfly print Y2K baby tee on Depop for just $18 and I am officially obsessed with the early-2000s energy. Already planning to wear it with baggy denim and sneakers for running errands, or dressed up a bit with trousers and combat boots. Such a good little wardrobe win.
+2: Scored this butterfly baby tee on Depop for just $18 and I am officially living my 2000s pop star fantasy. The graphics are so nostalgic and it fits like an absolute glove. Can't wait to style this with some baggy denim all summer long.
+3: Scored this butterfly print Y2K baby tee on Depop for just $18 and I am obsessed. It’s giving major early-2000s mallrat energy, especially paired with baggy denim and combat boots. Can't wait to live in this all through autumn.
+4: Scored this butterfly Y2K baby tee on Depop for just $18 and I am obsessed. The proportions are giving major 2000s streetwear when paired with baggy denim and chunky sneakers. Honestly such a win for the wardrobe rotation!
+5: Scored this Y2K butterfly baby tee on Depop for just $18 and I’m obsessed. It gives the ultimate early 2000s streetwear energy when paired with baggy dark denim and combat boots. Can't wait to style it with wide-leg trousers for a softer look, too.
+```
+
+**Criterion 5** — `tools.py::search_listings("vintage", "L", 45.0)` (via `agent.py::run_agent`, try 1 trace, then the full list re-run directly):
+
+```
+[2] search_listings (Via MCP)
+      in:  dict with keys: description, size, max_price
+      out: 5 items: Vintage Windbreaker — Color Block Purple/Teal, Vintage Graphic Hoodie — Faded Black, Vintage Linen Blazer — Cream … +2 more
+
+lst_010 Vintage Windbreaker — Color Block Purple/Teal   size L    $40.0
+lst_015 Vintage Graphic Hoodie — Faded Black            size L    $26.0
+lst_018 Vintage Linen Blazer — Cream                    size M/L  $38.0
+lst_033 Vintage Band Tee — Faded Grey                   size L    $19.0
+lst_006 Graphic Tee — 2003 Tour Bootleg Style           size L    $24.0
 ```
 
 ---
