@@ -526,26 +526,89 @@ full. -->
 
      `python run_eval.py --label after` -->
 
-**What I changed:**
+**What I changed:** one prompt, the one in `tools.py::create_fit_card`. I added
+two rules to what it sends the model, and changed nothing else (not the model,
+temperature, tools, loop or scenarios):
 
-**Which failure it was meant to fix:**
+```
+Write the price in digits with a dollar sign, like $40 — never spell it out as words like 'forty bucks'.
+Do not start the caption with 'Scored this' or 'Found this'; open with the vibe or the way you'll wear it.
+```
+
+**Which failure it was meant to fix:** both findings in my diagnosis for
+criterion 4, which point at the same model call. (1) In the criterion 5
+scenario, 3 of 5 windbreaker cards said "forty bucks" and would fail the `$40`
+price check. (2) All 20 fit cards in the before-log opened with "Scored this" or
+"Found the". I counted these as one change, a rewrite of one prompt, but they
+are two instructions. I measure them separately below so each can be judged on
+its own.
 
 ### Run Log — After
 
+`python run_eval.py --label after`, same 5 scenarios, 5 tries each, caching off
+(`results/run_2026-10-11_1715_after.md`). Scored the same way as the before-log.
+Criterion 3 re-scored with `check_ids.py` (all 5 tries: `lst_007` at every step).
+
 | Criterion | Target | Try 1 | Try 2 | Try 3 | Try 4 | Try 5 | Verdict |
 |---|---|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |  |  |
+| 1. Full three-tool run returns a fit card | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 2. Empty search stops before tool 2 | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 3. Item in session matches item passed on | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 4. Fit card for one item: 2-4 sentences, price, platform, distinct openers | 4 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
+| 5. Price and size filter holds | 5 of 5 | PASS | PASS | PASS | PASS | PASS | MET (5/5) |
 
-**Did it help, and how do I know:**
+**Before and after, side by side.** The five criteria scored identically (all
+MET, 5/5), so the table above can't show whether the change did anything. These
+are the measurements that can, from `score_runs.py` run on both logs:
 
-<!-- If it made things worse, say that. Honestly reported, that earns full
-     credit and is more interesting than one that worked. -->
+| Measure (all fit cards in the log, 20 cards unless noted) | Before | After |
+|---|---|---|
+| Five criteria verdicts | all MET | all MET |
+| Price written as digits (`$N`) | 17 / 20 | 20 / 20 |
+| Cards opening "Scored this" / "Found the" | 20 / 20 | 0 / 20 |
+| Cards using the word "obsessed" | 13 / 20 | 0 / 20 |
+| Cards containing the word "snagged" | 0 / 20 | 14 / 20 |
+| Cards starting "Channeling" | 0 / 20 | 4 / 20 |
+| 2-4 sentences / platform named | 20 / 20, 20 / 20 | 20 / 20, 20 / 20 |
+| Criterion 4 item: distinct first sentences | 5 / 5 | 5 / 5 |
+| Criterion 4 item: distinct first 4 words | 4 / 5 | 5 / 5 |
 
+Real output, criterion 4 (`tools.py::create_fit_card`, `y2k baby tee under $20`),
+all five tries after the change:
 
+```
+1: Pink, purple, and butterfly graphics are doing all the heavy lifting for my inner 2000s pop star. Snagged this Depop baby tee for $18 and I'm already rotating it between baggy low-rise denim and oversized zip-ups. Main character energy for under twenty bucks.
+2: Unironically living in this butterfly baby tee for the rest of spring. Snagged it on depop for $18 and honestly, the Y2K nostalgia is undefeated. Pair it with baggy denim and chunky sneakers or wide-leg trousers for that effortless off-duty look.
+3: The sweet-meets-grunge contrast of this butterfly baby tee is everything. Snagged it on depop for $18 and I'm already planning a million ways to style it. Time to live out all my 2000s pop star dreams.
+4: Channeling absolute 2000s pop princess energy with this pink and purple butterfly baby tee. Got it on Depop for just $18 and I am already living in it. Can't decide if I want to lean into baggy denim streetwear or give it a grungy edge with combat boots today.
+5: Channeling serious 2000s mall-rat energy with this little butterfly tee. Got lucky on Depop and snagged it for only $18. Already planning to wear it with baggy denim and chunky sneakers until further notice.
+```
+
+**Did it help, and how do I know:** Yes, for the price problem, and only
+partly for the repetition problem.
+
+- **Price in digits: it helped.** The three "forty bucks" cards were the only
+  cards in the before-log without a `$` figure (17 of 20). After the change all
+  20 cards have one. The cards for the same windbreaker that failed before now
+  read "...on thredUp for $40" in all 5 tries. That is 3 failures to 0 on a
+  small sample at temperature 0.9, so it is strong evidence, not proof.
+  Side note: after-try 1 for the baby tee also says "under twenty bucks" after
+  giving `$18`; the rule banned spelling the price out but the model still
+  rounded it in words once.
+- **Repeated opening: it moved the template, it didn't remove it.** Banning
+  "Scored this" worked literally (20 of 20 down to 0 of 20) and the five
+  openers for one item are now all different in their first four words. But
+  14 of 20 cards now put "Snagged ... on <platform> for $N" in the second
+  sentence, and 4 start with "Channeling". The model replaced one template with
+  another. A phrase-ban prompt can only chase phrases.
+- **No verdict changed.** All five criteria were MET before and after, so the
+  five-row table is identical. The improvement shows up only in the extra
+  measurements above, which I chose after seeing the before-log, so treat them as
+  a fair but not pre-registered test.
+- **Nothing got worse on what the criteria check:** 2-4 sentences and platform
+  named held at 20 of 20, and the average card went from 237 to 250 characters.
+- Only the prompt changed between the two runs, but the model is not
+  deterministic, so each run is one sample of five tries per scenario.
 
 ---
 

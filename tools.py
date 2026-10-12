@@ -257,7 +257,11 @@ def create_fit_card(outfit: str, new_item: dict) -> str:
         f"{new_item.get('platform')}.\n"
         f"The outfit idea: {outfit}\n\n"
         "Rules: two to four sentences. Mention the item, its price and the "
-        "platform once each. Be specific about the vibe. Sound like a person "
+        "platform once each. Write the price in digits with a dollar sign, "
+        f"like ${new_item.get('price'):.0f} — never spell it out as words "
+        "like 'forty bucks'. Do not start the caption with 'Scored this' or "
+        "'Found this'; open with the vibe or the way you'll wear it. "
+        "Be specific about the vibe. Sound like a person "
         "posting, not a product description. Don't use hashtags or a "
         "greeting like 'Hey guys'."
     )
