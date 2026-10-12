@@ -237,6 +237,18 @@ Found my new holy grail pair of vintage Levi's 501 jeans on Depop for just $38. 
 - *What came back:* It gave me a loop that picks the next tool from session state, with the empty-search branch returning before `suggest_outfit`. Separately, its first write of `tools.py` turned the `n` escapes inside the prompt strings into real line breaks, which gave a `SyntaxError` the first time the module was imported.
 - *What I changed:* I didn't take the loop on trust: I ran it with the model stubbed and confirmed the same object in `session["selected_item"]` reached both `suggest_outfit` and `create_fit_card`, and that the empty path left `fit_card` as None. The broken string literals were repaired and the import re-run until it compiled, and I kept the no-results message naming only the filters the user actually set (price, size, keywords).
 
+**Moment 3 (unit 4: building the test)**
+
+- *What I asked for:* I asked Claude to write the scenarios for criteria 3, 4 and 5 in `scenarios.py`, and then to cut them to one scenario per criterion because 14 scenarios x 5 tries was too many calls.
+- *What came back:* It picked queries by running `search_listings` first, so each one returns the listing I expected (for example `lst_002` for the baby tee), and it rewrote criteria 4 and 5 in `criteria.md` underneath the originals. It told me the original 5-item and 5-query versions would cost 25 runs each. That was wrong: they need 5 runs each, since the five items or queries are the five tries.
+- *What I changed:* I kept the one-scenario-per-criterion file, but the verdicts now state that those two revisions were made for run cost and not because the criteria couldn't be measured, and that the original wording was never run. Claude also pointed out that criterion 3 had only been scored by title, not by the ids the criterion names, and added `check_ids.py` to record the ids; I reviewed that result before moving on.
+
+**Moment 4 (unit 4: scoring and the fix)**
+
+- *What I asked for:* I asked Claude to score the before-run against my criteria and to make one fix for the miss my diagnosis named.
+- *What came back:* It scored every fit card with a script and found a problem my table had hidden: 3 of 20 cards wrote the price as "forty bucks", and all 20 opened with "Scored this" or "Found the". It then rewrote the `create_fit_card` prompt to require `$N` and ban those openers.
+- *What I changed:* The after-run was measured instead of assumed fixed, and I reviewed the numbers before moving on: the price problem went from 3 cards to 0, but the banned phrase was replaced by "Snagged ..." in 14 of 20 cards. I recorded that as a partial fix in the README and kept it as the top item in What's Still Broken.
+
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 3.
@@ -510,12 +522,22 @@ ython app.py ask 'does backpack under 50$?' --trace
 
 ```
 
-**On the MCP move:** <!-- what changed in your code, and whether anything
-behaved differently afterwards. If the rewire didn't work, say exactly where it
-broke — the error text and the last thing that worked. That earns the point in
-full. -->
-
-
+**On the MCP move:** I moved `search_listings` (the one tool with no model call)
+behind an MCP server. `mcp_server.py` now registers it with `@mcp.tool()`,
+typed inputs (`description: str`, `size: str | None`, `max_price: float | None`)
+and a docstring that states the inputs and the empty case, and calls the real
+implementation in `tools.py` under an alias. In `agent.py::run_agent` the direct
+call was swapped for `call_tool("search_listings", {...})` from `mcp_client.py`,
+which is why the trace now reads `search_listings (Via MCP)`. The return value
+did not change: for the three queries I compared (`vintage` size L under $45,
+`designer ballgown` size XXS under $5, `denim jacket` under $50), the list from
+`call_tool` was `==` to the list from calling `search_listings` directly, with
+the same count (5, 0, 7) and `price` still a `float`, and the empty search still
+came back as `[]`, so the loop's `if not results` branch kept working. The one
+thing that did behave differently is speed: each `call_tool` starts the server
+as a fresh process, and it took 0.3–0.7 s per search against about 0.0005 s
+direct. That is invisible next to the model calls, but it is a real cost of the
+seam. Nothing broke, so there's no failure to document.
 
 ---
 
@@ -614,11 +636,45 @@ partly for the repetition problem.
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped where
-     you did. "I ran out of time" is fine if it's true. Pretending nothing is
-     left is not. -->
+No criterion is MISSED in either run log: all five were MET (5/5) before and after.
+That is not the same as nothing being left. These are the things I would still
+fix, in order of how much I'd worry about them:
 
-
+1. **Criterion 4's "distinct openers" rule is weaker than what I care about.**
+   The prompt fix removed the "Scored this ... for $N and I am obsessed" template
+   but the model replaced it: 14 of 20 cards now say "Snagged ... on <platform>
+   for $N" in the second sentence and 4 start with "Channeling". The criterion
+   still passes because it only compares first sentences as strings. *What I'd
+   do:* tighten the criterion (no two cards share their first four words, and no
+   shared second-sentence verb), and change the prompt to give each call a
+   different angle to write from (for example a randomly chosen "mention the
+   fit / the colour / the occasion") instead of banning phrases one at a time.
+   *Why I stopped:* the prompt change is one change and the unit asked for one;
+   a second round of ban-list prompting would have been the same fix again.
+2. **I never ran the original wording of criteria 4 and 5.** I rewrote them to
+   one item and one query before the run, citing run cost, and the cost was
+   really 5 runs each, not 25. My verdicts are for the revised wording. *What
+   I'd do:* run "5 different items" and "5 size+price queries" once each (about
+   10 model calls and 5 model-free searches). *Why I stopped:* I noticed after
+   the before-run and chose to report it instead of re-running at the end.
+3. **Criterion 1's slack was never tested.** I set 4 of 5 because a keyword
+   search can miss on synonyms ("t-shirt" vs "tee"), and the one query I ran,
+   `vintage graphic tee`, has no synonym problem, so 5/5 says nothing about
+   that risk. *What I'd do:* add a scenario like `t-shirt under $30` and expect
+   it to fail until `search_listings` handles synonyms.
+4. **The price rule still leaks.** After the fix every card has `$N`, but one
+   baby-tee card also said "under twenty bucks" after giving `$18`. *What I'd
+   do:* count any spelled-out price as a failure in the scorer and add that to
+   the prompt. *Why I stopped:* it didn't break the criterion as written.
+5. **`parse_query` leaves a stray `$` in the description** when the price is
+   written after the number: `does backpack under 50$?` searched for
+   `"does backpack $?"` (see the empty-search trace above). It happened to be an
+   empty search anyway, but the same bug could drop a matching word. *What I'd
+   do:* strip a trailing `$` in `parse_query`. *Why I stopped:* no scenario in my
+   five hit it, so it is outside what I measured.
+6. **Criteria 2, 3 and 5 can't vary between tries.** They are deterministic
+   code, so five tries is five copies of one result. They are worth having as
+   regression checks, but they don't show reliability.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
