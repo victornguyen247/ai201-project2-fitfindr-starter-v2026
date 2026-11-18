@@ -101,6 +101,28 @@ def _log(record: dict) -> None:
     print(json.dumps(record, ensure_ascii=False), flush=True)
 
 
+def _ask_record(query, outcome, error_type, output, total_ms, steps, calls, hits, tokens) -> dict:
+    """The one record shape every /ask outcome writes, so none can be missing a field."""
+    return {
+        "event": "ask",
+        "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "query": query,
+        "outcome": outcome,
+        "error_type": error_type,
+        "output": output,
+        "total_ms": total_ms,
+        "steps_ms": steps,
+        "model_calls": calls,
+        "cache_hits": hits,
+        "tokens": tokens,
+    }
+
+
+# One line at startup. A Render restart shows up in the log as a new boot record
+# instead of only as a gap.
+_log({"event": "boot", "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "pid": os.getpid()})
+
+
 # In-memory only: resets whenever the process restarts or the free tier sleeps.
 _stats_lock = threading.Lock()
 _outcomes: dict[str, int] = {}
@@ -113,6 +135,8 @@ def _record(outcome: str, total_ms: int, calls: int, hits: int, tokens: int) -> 
     global _first_request_ms
     with _stats_lock:
         _outcomes[outcome] = _outcomes.get(outcome, 0) + 1
+        if outcome == "rejected_input":
+            return
         _latencies.append(total_ms)
         if _first_request_ms is None:
             _first_request_ms = total_ms
@@ -211,8 +235,11 @@ def ask():
     query = (payload.get("query") or "").strip()
     if not query:
         # 400 rather than a stack trace: the caller can act on this one.
-        return jsonify({"error": "Send JSON with a 'query' field, e.g. "
-                                 '{"query": "vintage graphic tee under $30"}'}), 400
+        message = ("Send JSON with a 'query' field, e.g. "
+                   '{"query": "vintage graphic tee under $30"}')
+        _record("rejected_input", 0, 0, 0, 0)
+        _log(_ask_record("", "rejected_input", "missing_query", message, 0, {}, 0, 0, 0))
+        return jsonify({"error": message}), 400
 
     wardrobe = payload.get("wardrobe")
     if not isinstance(wardrobe, dict):
@@ -254,27 +281,17 @@ def ask():
         _ctx.steps = None
 
     if failure is not None:
-        outcome = "server_error"
+        outcome, error_type, output = "server_error", exc_type, failure
     elif session.get("fit_card"):
-        outcome = "found"
+        outcome, error_type, output = "found", None, session["fit_card"]
     elif session.get("searched") and not session.get("search_results"):
-        outcome = "no_results"
+        outcome, error_type, output = "no_results", None, session.get("error")
     else:
-        outcome = "model_unavailable"
+        outcome, error_type, output = "model_unavailable", "ModelUnavailable", session.get("error")
 
     _record(outcome, total_ms, calls1 - calls0, hits1 - hits0, tokens1 - tokens0)
-    _log({
-        "event": "ask",
-        "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "query": query,
-        "outcome": outcome,
-        "error_type": exc_type,
-        "total_ms": total_ms,
-        "steps_ms": steps,
-        "model_calls": calls1 - calls0,
-        "cache_hits": hits1 - hits0,
-        "tokens": tokens1 - tokens0,
-    })
+    _log(_ask_record(query, outcome, error_type, output, total_ms, steps,
+                     calls1 - calls0, hits1 - hits0, tokens1 - tokens0))
 
     # Outside the lock: building a response is not work the next caller should
     # be waiting on.
