@@ -158,3 +158,119 @@ my first draft is most likely to slip.
      A number you missed stays where it is, gets diagnosed, and gets a fix
      attempted. That's where the points are.
      ───────────────────────────────────────────────────────────────────────── -->
+
+---
+---
+
+# Unit 9 criteria — Deploy and instrument
+
+The five criteria above are the ones from units 3 and 4 and are left exactly as
+they were. These five are for the extension: FitFindr running on Render
+(`https://ai201-fitfindr-z60z.onrender.com`) with a structured log and a
+`/metrics` route. All five are about the extension, and number 4 is about the
+bad paths. They were written before any measurement of the deployed service.
+
+**Words used below.** *Warm* means the service has answered a request in the
+last 10 minutes. *Matching query* means `vintage graphic tee under $30`.
+*No-match query* means `designer ballgown size XXS under $5`. *Empty request*
+means `POST /ask` with the body `{}`. *Log record* means one JSON line with
+`"event": "ask"`.
+
+---
+
+## 1. The hosted service completes a matching query
+
+Send a matching query to `POST /ask` on the Render URL 5 times in a row, with the
+service already warm. In 5 of 5 tries the response is HTTP 200, `fit_card` is a
+non-empty string, and `error` is null.
+
+**Why this target:**
+5 of 5, not the 4 of 5 I allowed for the same query on my laptop. That allowance
+was for model failures, and `generate.py` already retries up to
+`MAX_RETRIES = 5` times and paces itself to 15 requests a minute, so five
+sequential runs (ten model calls) stay under the limit. If a warm run still
+fails, the cause is the deployment: gunicorn's worker killed at the timeout, the
+512 MB instance running out of memory when the MCP search starts its second
+Python process, or a missing `GEMINI_API_KEY`. Those are exactly the things this
+extension introduced, so one miss is a finding and not noise. The first request
+after a sleep is excluded here and has its own criterion (3).
+
+---
+
+## 2. A warm matching run finishes in a bounded time
+
+Across 10 warm runs of the matching query, the median `total_ms` in the log
+records is at most 15,000 and no run is over 60,000.
+
+**Why this target:**
+On my laptop one matching run with a real model call took about 8,100 ms, of
+which the MCP search was 700 to 2,200 ms (a new Python process per search) and
+the caption call was most of the rest. A run now makes two model calls and runs
+on a free-tier CPU, so 15,000 ms is roughly twice what I saw locally: tight
+enough that a stuck rate-limit wait shows up, loose enough that ordinary model
+latency does not. The 60,000 ms ceiling is half of the 120 s gunicorn timeout in
+`render.yaml`. A run past that is close to being killed, and a user has long
+given up by then. I use the median and a maximum because a single slow Gemini
+call should not fail the median, but nothing should come near the timeout.
+
+---
+
+## 3. The service wakes from sleep within 90 seconds
+
+After the service has been idle for at least 20 minutes (Render's free tier
+sleeps after about 15), the first matching-query request, timed by the client's
+own stopwatch, returns HTTP 200 with a non-empty `fit_card` in at most 90
+seconds.
+
+**Why this target:**
+`RUNNING.md` says a wake-up takes "around a minute", so 90 seconds allows about
+half as long again for the model call that follows the wake-up. I measure it
+from the client because the server's own `total_ms` cannot include time before
+the app was running. It is a single trial because each one costs at least 20
+minutes of waiting, and the number I report is the one measured value, not an
+average. Past 90 seconds a browser or `curl` with a default timeout starts to
+fail, and a reviewer opening the link would conclude the app is broken.
+
+---
+
+## 4. Every request leaves a complete record, failures included
+
+Send 10 requests to the service in one sitting: 6 matching queries, 2 no-match
+queries and 2 empty requests. Afterwards the log (the Render Logs tab, searched
+for `"event": "ask"`) holds exactly 10 records for them: 10 of 10, with none
+missing. Every one of the 10 has a value for each of `ts`, `query`, `outcome`,
+`output` (the fit card text, or the error message), `total_ms`, `steps_ms`,
+`model_calls` and `tokens`. The 2 empty requests have `outcome` set to a
+rejected-input value, and the 2 no-match queries have `outcome` `no_results`.
+
+**Why this target:**
+10 of 10 with no slack, because the cost of being wrong here is invisible: a
+request that leaves no record looks the same as a request that never happened,
+and I would never find it while diagnosing in Milestone 5. I put the two empty
+requests in on purpose. In `serve.py` as it stands, a missing `query` returns
+400 before `run_agent` is reached and before any log line is written, so I
+expect to miss this target at first and the failure to be the useful part. The
+two no-match queries cover the second bad path, which is a 200 response that
+still carries an error, and which a status-code check alone would call a
+success. The field list is the one the run-log needs later: input, output,
+duration, and the per-step numbers that say where the time went.
+
+---
+
+## 5. The logged cost counters are real, not zeros
+
+For 10 matching-query runs made with the cache off, at least 9 of 10 log records
+show `model_calls` equal to 2, `cache_hits` equal to 0, and `tokens` greater
+than 0.
+
+**Why this target:**
+This protects the cost number I will report. A matching run makes exactly two
+model calls (`suggest_outfit` and `create_fit_card`), so `model_calls` should be
+2. `generate.py` counts every attempt, so a retry after a rate-limit response
+makes it 3, which is why I allow one run in ten to differ and not zero. The
+failure I most expect is the cache: `render.yaml` sets `AI201_CACHE=0`, but if
+that variable is missing or not read, repeated queries come back from cache with
+`model_calls` 0 and `tokens` 0, and a cost average taken from those logs would
+look like a very cheap system when it is not. A looser target (say 5 of 10)
+would let a half-cached run through. A stricter one (10 of 10) would fail on a
+single legitimate retry.
