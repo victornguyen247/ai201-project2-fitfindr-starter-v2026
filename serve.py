@@ -101,6 +101,34 @@ def _log(record: dict) -> None:
     print(json.dumps(record, ensure_ascii=False), flush=True)
 
 
+# In-memory only: resets whenever the process restarts or the free tier sleeps.
+_stats_lock = threading.Lock()
+_outcomes: dict[str, int] = {}
+_latencies: list[int] = []
+_first_request_ms: int | None = None
+_model_totals = {"calls": 0, "cache_hits": 0, "tokens": 0}
+
+
+def _record(outcome: str, total_ms: int, calls: int, hits: int, tokens: int) -> None:
+    global _first_request_ms
+    with _stats_lock:
+        _outcomes[outcome] = _outcomes.get(outcome, 0) + 1
+        _latencies.append(total_ms)
+        if _first_request_ms is None:
+            _first_request_ms = total_ms
+        _model_totals["calls"] += calls
+        _model_totals["cache_hits"] += hits
+        _model_totals["tokens"] += tokens
+
+
+def _percentile(sorted_values: list[int], pct: float) -> int | None:
+    """Nearest-rank percentile of an already sorted list."""
+    if not sorted_values:
+        return None
+    rank = max(1, round(pct / 100 * len(sorted_values)))
+    return sorted_values[rank - 1]
+
+
 # ── one request at a time ─────────────────────────────────────────────────────
 # Here's why this exists.
 #
@@ -147,6 +175,26 @@ _one_at_a_time = threading.Lock()
 def health():
     """Is the server awake? A host pings something like this to find out."""
     return jsonify({"status": "ok"})
+
+
+@app.get("/metrics")
+def metrics():
+    """Counts and latency since this process started. Resets on restart."""
+    with _stats_lock:
+        latencies = sorted(_latencies)
+        body = {
+            "uptime_s": round(time.time() - _BOOT),
+            "requests": len(latencies),
+            "outcomes": dict(_outcomes),
+            "latency_ms": {
+                "p50": _percentile(latencies, 50),
+                "p95": _percentile(latencies, 95),
+                "max": latencies[-1] if latencies else None,
+            },
+            "first_request_ms": _first_request_ms,
+            "model": dict(_model_totals),
+        }
+    return jsonify(body)
 
 
 @app.post("/ask")
@@ -214,6 +262,7 @@ def ask():
     else:
         outcome = "model_unavailable"
 
+    _record(outcome, total_ms, calls1 - calls0, hits1 - hits0, tokens1 - tokens0)
     _log({
         "event": "ask",
         "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
