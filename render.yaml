@@ -1,0 +1,19 @@
+# Render Blueprint for FitFindr (free web service).
+services:
+  - type: web
+    name: fitfindr
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # Default sync worker, on purpose: mcp_client.call_tool uses asyncio.run(),
+    # which breaks under gevent/eventlet/uvicorn workers. --timeout is raised
+    # because generate.py may pause to respect the model's per-minute limit.
+    startCommand: gunicorn serve:app --timeout 120
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: GEMINI_API_KEY
+        sync: false          # paste the real key in the Render dashboard
+      - key: AI201_CACHE
+        value: "0"           # cached answers would make latency numbers meaningless
