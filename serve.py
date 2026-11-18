@@ -33,9 +33,12 @@ then deploy it. A structured log you were handed teaches you nothing about
 what belongs in one — and the timing field is the one everybody skips.
 """
 
+import functools
+import json
 import os
 import sys
 import threading
+import time
 
 # config first, and before anything that talks to the model: it loads your .env
 # and fixes the Windows console encoding for every module that imports it.
@@ -43,10 +46,59 @@ import config  # noqa: F401
 
 from flask import Flask, jsonify, request
 
+import agent as _agent
+import generate
 from agent import run_agent
 from utils.data_loader import get_example_wardrobe
 
 app = Flask(__name__)
+
+_BOOT = time.time()
+
+
+# ── instrumentation (unit 9) ──────────────────────────────────────────────────
+# One JSON line per /ask request on stdout, which is where Render's log viewer
+# reads from. agent.py is not edited: the three steps are timed by wrapping the
+# names agent.py looks up at call time. `call_tool` is the MCP search.
+
+_ctx = threading.local()
+
+_STEP_NAMES = {
+    "call_tool": "search",
+    "suggest_outfit": "outfit",
+    "create_fit_card": "fit_card",
+}
+
+
+def _timed(step, fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        try:
+            return fn(*args, **kwargs)
+        finally:
+            steps = getattr(_ctx, "steps", None)
+            if steps is not None:
+                ms = round((time.perf_counter() - start) * 1000)
+                steps[step] = steps.get(step, 0) + ms
+    return wrapper
+
+
+for _attr, _step in _STEP_NAMES.items():
+    setattr(_agent, _attr, _timed(_step, getattr(_agent, _attr)))
+
+
+def _model_counters() -> tuple[int, int, int]:
+    """Calls, cache hits and total tokens generate.py has counted so far."""
+    return (
+        generate.call_count(),
+        getattr(generate, "_cache_hits", 0),
+        generate.token_counts()["total"],
+    )
+
+
+def _log(record: dict) -> None:
+    print(json.dumps(record, ensure_ascii=False), flush=True)
 
 
 # ── one request at a time ─────────────────────────────────────────────────────
@@ -138,11 +190,42 @@ def ask():
 
     failure = None
     session = None
+    exc_type = None
     with _one_at_a_time:
+        _ctx.steps = {}
+        calls0, hits0, tokens0 = _model_counters()
+        started = time.perf_counter()
         try:
             session = run_agent(query, wardrobe)
         except Exception as exc:  # noqa: BLE001 — a 500 with a sentence beats a hang
-            failure = f"{type(exc).__name__}: {exc}"
+            exc_type = type(exc).__name__
+            failure = f"{exc_type}: {exc}"
+        total_ms = round((time.perf_counter() - started) * 1000)
+        calls1, hits1, tokens1 = _model_counters()
+        steps = _ctx.steps
+        _ctx.steps = None
+
+    if failure is not None:
+        outcome = "server_error"
+    elif session.get("fit_card"):
+        outcome = "found"
+    elif session.get("searched") and not session.get("search_results"):
+        outcome = "no_results"
+    else:
+        outcome = "model_unavailable"
+
+    _log({
+        "event": "ask",
+        "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "query": query,
+        "outcome": outcome,
+        "error_type": exc_type,
+        "total_ms": total_ms,
+        "steps_ms": steps,
+        "model_calls": calls1 - calls0,
+        "cache_hits": hits1 - hits0,
+        "tokens": tokens1 - tokens0,
+    })
 
     # Outside the lock: building a response is not work the next caller should
     # be waiting on.
