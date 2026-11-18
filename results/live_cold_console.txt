@@ -1,0 +1,2 @@
+cold-start trial (service should have been idle for 20+ minutes)
+  status=200 41090 ms card=True failure=None

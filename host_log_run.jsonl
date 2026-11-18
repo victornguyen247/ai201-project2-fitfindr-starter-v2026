@@ -1,0 +1,1011 @@
+2026-11-18T21:39:04.806056355Z ==> Deploying...
+2026-11-18T21:39:04.889746817Z ==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+2026-11-18T21:39:25.648019567Z ==> Running 'gunicorn serve:app --timeout 120'
+2026-11-18T21:39:31.54592276Z [2026-11-18 21:39:31 +0000] [57] [INFO] Starting gunicorn 23.0.0
+2026-11-18T21:39:31.546085842Z [2026-11-18 21:39:31 +0000] [57] [INFO] Listening at: http://0.0.0.0:10000 (57)
+2026-11-18T21:39:31.546117494Z [2026-11-18 21:39:31 +0000] [57] [INFO] Using worker: sync
+2026-11-18T21:39:31.550059282Z [2026-11-18 21:39:31 +0000] [59] [INFO] Booting worker with pid: 59
+2026-11-18T21:39:32.102883334Z 127.0.0.1 - - [18/Nov/2026:21:39:32 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2026-11-18T21:39:35.517557454Z 10.238.26.184 - - [18/Nov/2026:21:39:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:39:35.518445089Z 10.238.26.184 - - [18/Nov/2026:21:39:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:39:36.059579179Z ==> Your service is live 🎉
+2026-11-18T21:39:36.179209991Z 127.0.0.1 - - [18/Nov/2026:21:39:36 +0000] "GET / HTTP/1.1" 404 207 "-" "Go-http-client/2.0"
+2026-11-18T21:39:36.191054216Z ==> 
+2026-11-18T21:39:36.194157133Z ==> ///////////////////////////////////////////////////////////
+2026-11-18T21:39:36.197110858Z ==> 
+2026-11-18T21:39:36.214928117Z ==> Available at your primary URL https://fitfindr-qzrp.onrender.com
+2026-11-18T21:39:36.217970543Z ==> 
+2026-11-18T21:39:36.239294447Z ==> ///////////////////////////////////////////////////////////
+2026-11-18T21:39:40.519223962Z 10.238.26.184 - - [18/Nov/2026:21:39:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:39:45.519093519Z 10.238.26.184 - - [18/Nov/2026:21:39:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:39:50.519326823Z 10.238.26.184 - - [18/Nov/2026:21:39:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:39:55.519161206Z 10.238.26.184 - - [18/Nov/2026:21:39:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:00.522919107Z 10.238.26.184 - - [18/Nov/2026:21:40:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:05.516939456Z 10.238.26.184 - - [18/Nov/2026:21:40:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:05.518951683Z 10.238.26.184 - - [18/Nov/2026:21:40:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:10.519220815Z 10.238.26.184 - - [18/Nov/2026:21:40:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:15.518799322Z 10.238.26.184 - - [18/Nov/2026:21:40:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:20.522474019Z 10.238.26.184 - - [18/Nov/2026:21:40:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:25.519051151Z 10.238.26.184 - - [18/Nov/2026:21:40:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:30.518671155Z 10.238.26.184 - - [18/Nov/2026:21:40:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:35.51693291Z 10.238.26.184 - - [18/Nov/2026:21:40:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:35.518245036Z 10.238.26.184 - - [18/Nov/2026:21:40:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:40.519282989Z 10.238.26.184 - - [18/Nov/2026:21:40:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:45.520870474Z 10.238.26.184 - - [18/Nov/2026:21:40:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:48.857098336Z 127.0.0.1 - - [18/Nov/2026:21:40:48 +0000] "GET /health HTTP/1.1" 200 16 "-" "curl/8.10.1"
+2026-11-18T21:40:49.057424121Z 127.0.0.1 - - [18/Nov/2026:21:40:49 +0000] "GET /metrics HTTP/1.1" 200 161 "-" "curl/8.10.1"
+2026-11-18T21:40:50.519907784Z 10.238.26.184 - - [18/Nov/2026:21:40:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:55.519123723Z 10.238.26.184 - - [18/Nov/2026:21:40:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:40:59.225874811Z [1] parse_query
+2026-11-18T21:40:59.225902443Z       in:  dict with keys: query
+2026-11-18T21:40:59.225907564Z       out: dict with keys: description, size, max_price
+2026-11-18T21:41:07.957548061Z [2] search_listings (Via MCP)
+2026-11-18T21:41:07.957581503Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:41:07.957599004Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:41:07.957602994Z [3] selected_item
+2026-11-18T21:41:07.957605665Z       in:  dict with keys: search_results
+2026-11-18T21:41:07.957608195Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:41:15.225306475Z [4] suggest_outfit
+2026-11-18T21:41:15.225446086Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:41:15.225452156Z       out: Grab that 2003 tour tee! It’s the ultimate grunge-streetwear staple.   **Outfit 1: Casual Streetwear** Pair th…
+2026-11-18T21:41:21.383863323Z [5] create_fit_card
+2026-11-18T21:41:21.383880645Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:41:21.383885055Z       out: Living in this 2003 tour tee all fall. Snagged it on Depop for $24 and it's officially the anchor of my new st…
+2026-11-18T21:41:21.3842258Z {"event": "ask", "ts": "2026-11-18T21:41:21Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 22159, "steps_ms": {"search": 8731, "outfit": 7268, "fit_card": 6159}, "model_calls": 2, "cache_hits": 0, "tokens": 856}
+2026-11-18T21:41:21.384845695Z 127.0.0.1 - - [18/Nov/2026:21:41:21 +0000] "POST /ask HTTP/1.1" 200 7114 "-" "Python-urllib/3.13"
+2026-11-18T21:41:21.385568958Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.386134589Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.386629475Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.387155214Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.387627408Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.388373543Z 10.238.26.184 - - [18/Nov/2026:21:41:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:21.688279574Z 127.0.0.1 - - [18/Nov/2026:21:41:21 +0000] "GET /metrics HTTP/1.1" 200 177 "-" "Python-urllib/3.13"
+2026-11-18T21:41:21.886991121Z [6] parse_query
+2026-11-18T21:41:21.887011773Z       in:  dict with keys: query
+2026-11-18T21:41:21.887015953Z       out: dict with keys: description, size, max_price
+2026-11-18T21:41:26.354880614Z [7] search_listings (Via MCP)
+2026-11-18T21:41:26.354912006Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:41:26.354918157Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:41:26.354923247Z [8] selected_item
+2026-11-18T21:41:26.354927907Z       in:  dict with keys: search_results
+2026-11-18T21:41:26.354932248Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:41:27.831441693Z [9] suggest_outfit
+2026-11-18T21:41:27.831465854Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:41:27.831470235Z       out: Hey there! That 2003 tour bootleg tee is an absolute score for a grunge-streetwear vibe. Since it’s a size L, …
+2026-11-18T21:41:28.921327823Z [10] create_fit_card
+2026-11-18T21:41:28.921351795Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:41:28.921357265Z       out: Nothing beats the slouch of a good oversized tee for an effortless grunge-streetwear fit. Snagged this 2003 to…
+2026-11-18T21:41:28.921368906Z {"event": "ask", "ts": "2026-11-18T21:41:28Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7034, "steps_ms": {"search": 4468, "outfit": 1477, "fit_card": 1090}, "model_calls": 2, "cache_hits": 0, "tokens": 998}
+2026-11-18T21:41:28.922017124Z 127.0.0.1 - - [18/Nov/2026:21:41:28 +0000] "POST /ask HTTP/1.1" 200 7401 "-" "Python-urllib/3.13"
+2026-11-18T21:41:28.922852655Z 10.238.26.184 - - [18/Nov/2026:21:41:28 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:29.198793944Z [11] parse_query
+2026-11-18T21:41:29.198846108Z       in:  dict with keys: query
+2026-11-18T21:41:29.198852658Z       out: dict with keys: description, size, max_price
+2026-11-18T21:41:33.048668479Z [12] search_listings (Via MCP)
+2026-11-18T21:41:33.048698301Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:41:33.048702942Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:41:33.048706282Z [13] selected_item
+2026-11-18T21:41:33.048708732Z       in:  dict with keys: search_results
+2026-11-18T21:41:33.048710972Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:41:34.488652937Z [14] suggest_outfit
+2026-11-18T21:41:34.48868331Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:41:34.4886879Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s going to bring so much grunge-streetwear edge …
+2026-11-18T21:41:39.710453149Z [15] create_fit_card
+2026-11-18T21:41:39.71047854Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:41:39.710482271Z       out: Instant grunge-streetwear edge unlocked with this 2003 tour bootleg tee. Snagged it on depop for $24 and I'm a…
+2026-11-18T21:41:39.710498852Z {"event": "ask", "ts": "2026-11-18T21:41:39Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 10512, "steps_ms": {"search": 3850, "outfit": 1440, "fit_card": 5222}, "model_calls": 2, "cache_hits": 0, "tokens": 872}
+2026-11-18T21:41:39.711107537Z 127.0.0.1 - - [18/Nov/2026:21:41:39 +0000] "POST /ask HTTP/1.1" 200 7134 "-" "Python-urllib/3.13"
+2026-11-18T21:41:39.71183285Z 10.238.26.184 - - [18/Nov/2026:21:41:39 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:39.712492398Z 10.238.26.184 - - [18/Nov/2026:21:41:39 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:39.713110903Z 10.238.26.184 - - [18/Nov/2026:21:41:39 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:39.913686555Z [16] parse_query
+2026-11-18T21:41:39.913707587Z       in:  dict with keys: query
+2026-11-18T21:41:39.913711957Z       out: dict with keys: description, size, max_price
+2026-11-18T21:41:43.850952957Z [17] search_listings (Via MCP)
+2026-11-18T21:41:43.850973168Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:41:43.850977059Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:41:43.850981519Z [18] selected_item
+2026-11-18T21:41:43.850985299Z       in:  dict with keys: search_results
+2026-11-18T21:41:43.850988919Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:41:50.332370621Z [19] suggest_outfit
+2026-11-18T21:41:50.332396213Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:41:50.332400143Z       out: Hey friend! That 2003 tour tee is an absolute goldmine for grunge styling. Here are two ways to rock it with p…
+2026-11-18T21:41:52.672698096Z [20] create_fit_card
+2026-11-18T21:41:52.672719638Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:41:52.672723628Z       out: Channeling peak early-2000s angst with this vintage bootleg tour tee. Snagged it on Depop for $24 and it's alr…
+2026-11-18T21:41:52.672741599Z {"event": "ask", "ts": "2026-11-18T21:41:52Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 12759, "steps_ms": {"search": 3937, "outfit": 6481, "fit_card": 2340}, "model_calls": 2, "cache_hits": 0, "tokens": 826}
+2026-11-18T21:41:52.672875779Z 127.0.0.1 - - [18/Nov/2026:21:41:52 +0000] "POST /ask HTTP/1.1" 200 7094 "-" "Python-urllib/3.13"
+2026-11-18T21:41:52.673851431Z 10.238.26.184 - - [18/Nov/2026:21:41:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:52.68627034Z 10.238.26.184 - - [18/Nov/2026:21:41:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:52.687071908Z 10.238.26.184 - - [18/Nov/2026:21:41:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:41:53.066794941Z [21] parse_query
+2026-11-18T21:41:53.066865757Z       in:  dict with keys: query
+2026-11-18T21:41:53.066872277Z       out: dict with keys: description, size, max_price
+2026-11-18T21:41:57.356516219Z [22] search_listings (Via MCP)
+2026-11-18T21:41:57.356542521Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:41:57.356545291Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:41:57.356547901Z [23] selected_item
+2026-11-18T21:41:57.356550451Z       in:  dict with keys: search_results
+2026-11-18T21:41:57.356552512Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:41:58.893341244Z [24] suggest_outfit
+2026-11-18T21:41:58.893366845Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:41:58.893371596Z       out: Hey friend! That 2003 tour tee is an absolute goldmine for grunge styling. Here are two ways to rock it using …
+2026-11-18T21:42:00.115342677Z [25] create_fit_card
+2026-11-18T21:42:00.115373839Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:00.11537882Z       out: Channeling total 2000s indie-sleaze with this faded bootleg tour tee I picked up on Depop for $24. It’s got th…
+2026-11-18T21:42:00.11538354Z {"event": "ask", "ts": "2026-11-18T21:42:00Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7049, "steps_ms": {"search": 4289, "outfit": 1537, "fit_card": 1222}, "model_calls": 2, "cache_hits": 0, "tokens": 831}
+2026-11-18T21:42:00.11579736Z 127.0.0.1 - - [18/Nov/2026:21:42:00 +0000] "POST /ask HTTP/1.1" 200 7090 "-" "Python-urllib/3.13"
+2026-11-18T21:42:00.116562136Z 10.238.26.184 - - [18/Nov/2026:21:42:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:00.58067138Z [26] parse_query
+2026-11-18T21:42:00.580693142Z       in:  dict with keys: query
+2026-11-18T21:42:00.580697362Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:04.64711362Z [27] search_listings (Via MCP)
+2026-11-18T21:42:04.647146353Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:04.647152423Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:04.647157213Z [28] selected_item
+2026-11-18T21:42:04.647161854Z       in:  dict with keys: search_results
+2026-11-18T21:42:04.647166474Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:05.959948447Z [29] suggest_outfit
+2026-11-18T21:42:05.959974799Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:42:05.959980479Z       out: Hey there! Grab that 2003 tour tee—it’s an absolute gem for nailing that grunge-streetwear vibe. Here are two …
+2026-11-18T21:42:06.62716364Z [30] create_fit_card
+2026-11-18T21:42:06.627189532Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:06.627192942Z       out: Channeling major 2000s grunge with this bootleg tour tee. Snagged it on depop for just $24 and I'm already pla…
+2026-11-18T21:42:06.627196132Z {"event": "ask", "ts": "2026-11-18T21:42:06Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6046, "steps_ms": {"search": 4066, "outfit": 1313, "fit_card": 667}, "model_calls": 2, "cache_hits": 0, "tokens": 835}
+2026-11-18T21:42:06.627587231Z 127.0.0.1 - - [18/Nov/2026:21:42:06 +0000] "POST /ask HTTP/1.1" 200 7052 "-" "Python-urllib/3.13"
+2026-11-18T21:42:06.628610546Z 10.238.26.184 - - [18/Nov/2026:21:42:06 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:06.629066659Z 10.238.26.184 - - [18/Nov/2026:21:42:06 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:06.629982676Z 10.238.26.184 - - [18/Nov/2026:21:42:06 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:07.064927066Z [31] parse_query
+2026-11-18T21:42:07.064951228Z       in:  dict with keys: query
+2026-11-18T21:42:07.064955299Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:11.257456621Z [32] search_listings (Via MCP)
+2026-11-18T21:42:11.257476592Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:11.257480662Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:11.257484232Z [33] selected_item
+2026-11-18T21:42:11.257487783Z       in:  dict with keys: search_results
+2026-11-18T21:42:11.257491363Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:12.729825208Z [34] suggest_outfit
+2026-11-18T21:42:12.7298478Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:42:12.72985308Z       out: Hey friend! That 2003 tour tee is an absolute score for your grunge-streetwear vibe. Since it’s a size L, it’l…
+2026-11-18T21:42:13.534735135Z [35] create_fit_card
+2026-11-18T21:42:13.534761347Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:13.534767568Z       out: Channeling peak 2003 garage-rock energy with this vintage bootleg tour tee I snagged on Depop for $24. It has …
+2026-11-18T21:42:13.534784389Z {"event": "ask", "ts": "2026-11-18T21:42:13Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6470, "steps_ms": {"search": 4193, "outfit": 1472, "fit_card": 805}, "model_calls": 2, "cache_hits": 0, "tokens": 881}
+2026-11-18T21:42:13.535307737Z 127.0.0.1 - - [18/Nov/2026:21:42:13 +0000] "POST /ask HTTP/1.1" 200 7264 "-" "Python-urllib/3.13"
+2026-11-18T21:42:13.53616388Z 10.238.26.184 - - [18/Nov/2026:21:42:13 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:13.830268726Z [36] parse_query
+2026-11-18T21:42:13.830286697Z       in:  dict with keys: query
+2026-11-18T21:42:13.830291058Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:17.941829469Z [37] search_listings (Via MCP)
+2026-11-18T21:42:17.941858481Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:17.941864482Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:17.941869452Z [38] selected_item
+2026-11-18T21:42:17.941875243Z       in:  dict with keys: search_results
+2026-11-18T21:42:17.941880353Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:20.292935632Z [39] suggest_outfit
+2026-11-18T21:42:20.292981975Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:42:20.292986756Z       out: Hey friend! That 2003 tour tee is an absolute score—bootleg style graphics add instant grunge street cred to a…
+2026-11-18T21:42:23.9057985Z [40] create_fit_card
+2026-11-18T21:42:23.905844374Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:23.905849924Z       out: Achingly cool early-2000s grunge energy, and I only dropped $24 on Depop for the bootleg graphic tee to prove …
+2026-11-18T21:42:23.905859475Z {"event": "ask", "ts": "2026-11-18T21:42:23Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 10076, "steps_ms": {"search": 4110, "outfit": 2352, "fit_card": 3613}, "model_calls": 2, "cache_hits": 0, "tokens": 877}
+2026-11-18T21:42:23.906406104Z 127.0.0.1 - - [18/Nov/2026:21:42:23 +0000] "POST /ask HTTP/1.1" 200 7101 "-" "Python-urllib/3.13"
+2026-11-18T21:42:23.907124347Z 10.238.26.184 - - [18/Nov/2026:21:42:23 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:23.907677117Z 10.238.26.184 - - [18/Nov/2026:21:42:23 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:24.218447182Z [41] parse_query
+2026-11-18T21:42:24.218464143Z       in:  dict with keys: query
+2026-11-18T21:42:24.218467234Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:28.357659343Z [42] search_listings (Via MCP)
+2026-11-18T21:42:28.357680884Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:28.357684075Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:28.357686925Z [43] selected_item
+2026-11-18T21:42:28.357689425Z       in:  dict with keys: search_results
+2026-11-18T21:42:28.357691515Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:28.489046479Z [44] suggest_outfit
+2026-11-18T21:42:28.489076621Z       →    ModelUnavailable, stopping
+2026-11-18T21:42:28.489081151Z {"event": "ask", "ts": "2026-11-18T21:42:28Z", "query": "vintage graphic tee under $30", "outcome": "model_unavailable", "error_type": null, "total_ms": 4271, "steps_ms": {"search": 4139, "outfit": 131}, "model_calls": 1, "cache_hits": 0, "tokens": 0}
+2026-11-18T21:42:28.489538325Z 127.0.0.1 - - [18/Nov/2026:21:42:28 +0000] "POST /ask HTTP/1.1" 200 6432 "-" "Python-urllib/3.13"
+2026-11-18T21:42:28.490228175Z 10.238.26.184 - - [18/Nov/2026:21:42:28 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:28.786986864Z [45] parse_query
+2026-11-18T21:42:28.787003476Z       in:  dict with keys: query
+2026-11-18T21:42:28.787006516Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:33.467900211Z [46] search_listings (Via MCP)
+2026-11-18T21:42:33.467953944Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:33.467958435Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:33.467961655Z [47] selected_item
+2026-11-18T21:42:33.467964745Z       in:  dict with keys: search_results
+2026-11-18T21:42:33.467967956Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:40.961756005Z [48] suggest_outfit
+2026-11-18T21:42:40.961785678Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:42:40.961791758Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s going to bring so much effortless grunge energ…
+2026-11-18T21:42:44.134371671Z [49] create_fit_card
+2026-11-18T21:42:44.134402553Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:44.134419445Z       out: Getting way too much mileage out of this 2003 tour bootleg tee. Snagged it on depop for $24 and it's the exact…
+2026-11-18T21:42:44.134422645Z {"event": "ask", "ts": "2026-11-18T21:42:44Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 15347, "steps_ms": {"search": 4678, "outfit": 7497, "fit_card": 3173}, "model_calls": 2, "cache_hits": 0, "tokens": 833}
+2026-11-18T21:42:44.134884529Z 127.0.0.1 - - [18/Nov/2026:21:42:44 +0000] "POST /ask HTTP/1.1" 200 7125 "-" "Python-urllib/3.13"
+2026-11-18T21:42:44.135535576Z 10.238.26.184 - - [18/Nov/2026:21:42:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:44.136026232Z 10.238.26.184 - - [18/Nov/2026:21:42:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:44.136452734Z 10.238.26.184 - - [18/Nov/2026:21:42:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:44.136998414Z 10.238.26.184 - - [18/Nov/2026:21:42:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:44.571261452Z [50] parse_query
+2026-11-18T21:42:44.571283913Z       in:  dict with keys: query
+2026-11-18T21:42:44.571287963Z       out: dict with keys: description, size, max_price
+2026-11-18T21:42:49.059985369Z [51] search_listings (Via MCP)
+2026-11-18T21:42:49.060027982Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:42:49.060034033Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:42:49.060038573Z [52] selected_item
+2026-11-18T21:42:49.060046644Z       in:  dict with keys: search_results
+2026-11-18T21:42:49.060050854Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:42:51.826029427Z [53] suggest_outfit
+2026-11-18T21:42:51.82606748Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:42:51.82607409Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s going to bring so much effortless grunge energ…
+2026-11-18T21:42:55.578935327Z [54] create_fit_card
+2026-11-18T21:42:55.578963329Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:42:55.578969529Z       out: Nothing beats effortless 2000s grunge energy for everyday wear. Snagged this bootleg tour graphic tee on Depop…
+2026-11-18T21:42:55.57897601Z {"event": "ask", "ts": "2026-11-18T21:42:55Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11007, "steps_ms": {"search": 4489, "outfit": 2766, "fit_card": 3753}, "model_calls": 2, "cache_hits": 0, "tokens": 862}
+2026-11-18T21:42:55.57926274Z 127.0.0.1 - - [18/Nov/2026:21:42:55 +0000] "POST /ask HTTP/1.1" 200 7112 "-" "Python-urllib/3.13"
+2026-11-18T21:42:55.580579337Z 10.238.26.184 - - [18/Nov/2026:21:42:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:55.581188561Z 10.238.26.184 - - [18/Nov/2026:21:42:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:55.684643593Z 10.238.26.184 - - [18/Nov/2026:21:42:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:42:55.979234972Z [55] parse_query
+2026-11-18T21:42:55.979260644Z       in:  dict with keys: query
+2026-11-18T21:42:55.979267734Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:00.05296153Z [56] search_listings (Via MCP)
+2026-11-18T21:43:00.052990492Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:00.052996393Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:43:00.053001583Z [57] selected_item
+2026-11-18T21:43:00.053018864Z       in:  dict with keys: search_results
+2026-11-18T21:43:00.053021545Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:43:04.232215871Z [58] suggest_outfit
+2026-11-18T21:43:04.232241633Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:43:04.232245293Z       out: Hey friend! That 2003 tour tee is an absolute score—bootleg style graphics add instant grunge street- cred. Si…
+2026-11-18T21:43:07.879091641Z [59] create_fit_card
+2026-11-18T21:43:07.879114183Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:43:07.879118473Z       out: Embrace the ultimate 2003 grunge era with this faded tour tee. Snagged it on depop for $24 and the vintage boo…
+2026-11-18T21:43:07.879124664Z {"event": "ask", "ts": "2026-11-18T21:43:07Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11900, "steps_ms": {"search": 4074, "outfit": 4179, "fit_card": 3647}, "model_calls": 2, "cache_hits": 0, "tokens": 853}
+2026-11-18T21:43:07.879913021Z 127.0.0.1 - - [18/Nov/2026:21:43:07 +0000] "POST /ask HTTP/1.1" 200 7124 "-" "Python-urllib/3.13"
+2026-11-18T21:43:07.880627534Z 10.238.26.184 - - [18/Nov/2026:21:43:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:07.881454334Z 10.238.26.184 - - [18/Nov/2026:21:43:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:07.88208829Z 10.238.26.184 - - [18/Nov/2026:21:43:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:08.062031856Z 127.0.0.1 - - [18/Nov/2026:21:43:08 +0000] "POST /ask HTTP/1.1" 400 96 "-" "Python-urllib/3.13"
+2026-11-18T21:43:08.307765016Z [60] parse_query
+2026-11-18T21:43:08.307785788Z       in:  dict with keys: query
+2026-11-18T21:43:08.307790748Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:12.456574313Z [61] search_listings (Via MCP)
+2026-11-18T21:43:12.456606845Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:12.456611295Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:43:12.456614856Z [62] selected_item
+2026-11-18T21:43:12.456618106Z       in:  dict with keys: search_results
+2026-11-18T21:43:12.456621026Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:43:14.886470531Z [63] suggest_outfit
+2026-11-18T21:43:14.886493743Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:43:14.886498843Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s got that perfect lived-in grunge edge. Here ar…
+2026-11-18T21:43:17.067731588Z [64] create_fit_card
+2026-11-18T21:43:17.06775457Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:43:17.06775999Z       out: That perfect lived-in grunge energy is hard to fake. This 2003 tour bootleg tee from Depop was only $24 and ho…
+2026-11-18T21:43:17.067766091Z {"event": "ask", "ts": "2026-11-18T21:43:17Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8760, "steps_ms": {"search": 4149, "outfit": 2430, "fit_card": 2181}, "model_calls": 2, "cache_hits": 0, "tokens": 858}
+2026-11-18T21:43:17.068264287Z 127.0.0.1 - - [18/Nov/2026:21:43:17 +0000] "POST /ask HTTP/1.1" 200 7158 "-" "Python-urllib/3.13"
+2026-11-18T21:43:17.068793466Z 10.238.26.184 - - [18/Nov/2026:21:43:17 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:17.069295772Z 10.238.26.184 - - [18/Nov/2026:21:43:17 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:17.248567759Z [65] parse_query
+2026-11-18T21:43:17.248584661Z       in:  dict with keys: query
+2026-11-18T21:43:17.248598282Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:21.246912494Z [66] search_listings (Via MCP)
+2026-11-18T21:43:21.246943126Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:21.246947597Z       out: [] (empty)
+2026-11-18T21:43:21.246950457Z [67] branch: search empty
+2026-11-18T21:43:21.246953427Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:21.246956897Z       out: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try…
+2026-11-18T21:43:21.246960187Z       →    suggest_outfit and create_fit_card not called
+2026-11-18T21:43:21.246972818Z {"event": "ask", "ts": "2026-11-18T21:43:21Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "total_ms": 3998, "steps_ms": {"search": 3998}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+2026-11-18T21:43:21.248112552Z 127.0.0.1 - - [18/Nov/2026:21:43:21 +0000] "POST /ask HTTP/1.1" 200 2056 "-" "Python-urllib/3.13"
+2026-11-18T21:43:21.248353429Z 10.238.26.184 - - [18/Nov/2026:21:43:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:21.543945132Z [68] parse_query
+2026-11-18T21:43:21.543963873Z       in:  dict with keys: query
+2026-11-18T21:43:21.543966943Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:25.851099417Z [69] search_listings (Via MCP)
+2026-11-18T21:43:25.851122148Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:25.851126509Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:43:25.851130269Z [70] selected_item
+2026-11-18T21:43:25.851133779Z       in:  dict with keys: search_results
+2026-11-18T21:43:25.85113767Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:43:30.005434667Z [71] suggest_outfit
+2026-11-18T21:43:30.005463889Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:43:30.005470089Z       out: Hey friend! That 2003 tour tee is an absolute goldmine for grunge styling. Here are two ways to rock it with w…
+2026-11-18T21:43:31.055066193Z [72] create_fit_card
+2026-11-18T21:43:31.055084824Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:43:31.055088804Z       out: Nothing beats a worn-in tour tee for nailing that effortless grunge look. Snagged this 2003 graphic gem on Dep…
+2026-11-18T21:43:31.055110446Z {"event": "ask", "ts": "2026-11-18T21:43:31Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 9511, "steps_ms": {"search": 4307, "outfit": 4154, "fit_card": 1050}, "model_calls": 2, "cache_hits": 0, "tokens": 960}
+2026-11-18T21:43:31.055676658Z 127.0.0.1 - - [18/Nov/2026:21:43:31 +0000] "POST /ask HTTP/1.1" 200 7286 "-" "Python-urllib/3.13"
+2026-11-18T21:43:31.056447484Z 10.238.26.184 - - [18/Nov/2026:21:43:31 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:31.057048298Z 10.238.26.184 - - [18/Nov/2026:21:43:31 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:31.459647502Z [73] parse_query
+2026-11-18T21:43:31.459665393Z       in:  dict with keys: query
+2026-11-18T21:43:31.459669183Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:35.55752113Z [74] search_listings (Via MCP)
+2026-11-18T21:43:35.557548402Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:35.557554332Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:43:35.557557852Z [75] selected_item
+2026-11-18T21:43:35.557573244Z       in:  dict with keys: search_results
+2026-11-18T21:43:35.557576154Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:43:42.907465752Z [76] suggest_outfit
+2026-11-18T21:43:42.907494534Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:43:42.907498604Z       out: Hey friend! That 2003 tour tee is an absolute score—bootleg-style band tees bring that effortless grunge edge …
+2026-11-18T21:43:44.089511307Z [77] create_fit_card
+2026-11-18T21:43:44.089531939Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:43:44.089535139Z       out: Nothing beats the effortless grunge energy of a vintage bootleg band tee. Managed to snag this 2003 tour graph…
+2026-11-18T21:43:44.089537839Z {"event": "ask", "ts": "2026-11-18T21:43:44Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 12630, "steps_ms": {"search": 4098, "outfit": 7350, "fit_card": 1182}, "model_calls": 2, "cache_hits": 0, "tokens": 853}
+2026-11-18T21:43:44.09009618Z 127.0.0.1 - - [18/Nov/2026:21:43:44 +0000] "POST /ask HTTP/1.1" 200 7137 "-" "Python-urllib/3.13"
+2026-11-18T21:43:44.090740027Z 10.238.26.184 - - [18/Nov/2026:21:43:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:44.091242074Z 10.238.26.184 - - [18/Nov/2026:21:43:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:44.091692797Z 10.238.26.184 - - [18/Nov/2026:21:43:44 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:44.305965068Z 127.0.0.1 - - [18/Nov/2026:21:43:44 +0000] "POST /ask HTTP/1.1" 400 96 "-" "Python-urllib/3.13"
+2026-11-18T21:43:44.441848182Z [78] parse_query
+2026-11-18T21:43:44.441868264Z       in:  dict with keys: query
+2026-11-18T21:43:44.441872264Z       out: dict with keys: description, size, max_price
+2026-11-18T21:43:48.457837584Z [79] search_listings (Via MCP)
+2026-11-18T21:43:48.457866156Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:43:48.457870576Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:43:48.457874616Z [80] selected_item
+2026-11-18T21:43:48.457878267Z       in:  dict with keys: search_results
+2026-11-18T21:43:48.457881467Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:43:55.187381861Z [81] suggest_outfit
+2026-11-18T21:43:55.187408482Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:43:55.187414773Z       out: Grab that 2003 tour tee—it’s going to be a heavy rotation piece!   **Look 1: Effortless Streetwear** Pair the …
+2026-11-18T21:43:55.947295673Z [82] create_fit_card
+2026-11-18T21:43:55.947317045Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:43:55.947322525Z       out: Already planning at least ten ways to wear this 2003 tour bootleg tee. Snagged it on Depop for $24 and the vin…
+2026-11-18T21:43:55.947332736Z {"event": "ask", "ts": "2026-11-18T21:43:55Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11506, "steps_ms": {"search": 4016, "outfit": 6730, "fit_card": 760}, "model_calls": 2, "cache_hits": 0, "tokens": 801}
+2026-11-18T21:43:55.947837883Z 127.0.0.1 - - [18/Nov/2026:21:43:55 +0000] "POST /ask HTTP/1.1" 200 7014 "-" "Python-urllib/3.13"
+2026-11-18T21:43:55.948424866Z 10.238.26.184 - - [18/Nov/2026:21:43:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:55.948863638Z 10.238.26.184 - - [18/Nov/2026:21:43:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:55.949315631Z 10.238.26.184 - - [18/Nov/2026:21:43:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:43:56.337898394Z [83] parse_query
+2026-11-18T21:43:56.337922856Z       in:  dict with keys: query
+2026-11-18T21:43:56.337926566Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:00.752909677Z [84] search_listings (Via MCP)
+2026-11-18T21:44:00.752940089Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:00.75294441Z       out: [] (empty)
+2026-11-18T21:44:00.75294734Z [85] branch: search empty
+2026-11-18T21:44:00.75295048Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:00.752954181Z       out: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try…
+2026-11-18T21:44:00.752957071Z       →    suggest_outfit and create_fit_card not called
+2026-11-18T21:44:00.752975742Z {"event": "ask", "ts": "2026-11-18T21:44:00Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "total_ms": 4415, "steps_ms": {"search": 4415}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+2026-11-18T21:44:00.753465318Z 127.0.0.1 - - [18/Nov/2026:21:44:00 +0000] "POST /ask HTTP/1.1" 200 2056 "-" "Python-urllib/3.13"
+2026-11-18T21:44:00.84024442Z 10.238.26.184 - - [18/Nov/2026:21:44:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:01.167057021Z [86] parse_query
+2026-11-18T21:44:01.167071873Z       in:  dict with keys: query
+2026-11-18T21:44:01.167075093Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:05.356702448Z [87] search_listings (Via MCP)
+2026-11-18T21:44:05.35673059Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:05.356736031Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:05.356739611Z [88] selected_item
+2026-11-18T21:44:05.356742671Z       in:  dict with keys: search_results
+2026-11-18T21:44:05.356745831Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:44:06.423699289Z [89] suggest_outfit
+2026-11-18T21:44:06.423721271Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:44:06.423726811Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s going to bring such an effortless, grunge-chic…
+2026-11-18T21:44:07.321219914Z [90] create_fit_card
+2026-11-18T21:44:07.321236886Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:44:07.321241406Z       out: Nothing beats that lived-in, faded band-tee energy. Just grabbed this 2003 tour bootleg on depop for $24 and i…
+2026-11-18T21:44:07.321284809Z {"event": "ask", "ts": "2026-11-18T21:44:07Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6154, "steps_ms": {"search": 4190, "outfit": 1067, "fit_card": 897}, "model_calls": 2, "cache_hits": 0, "tokens": 876}
+2026-11-18T21:44:07.321904445Z 127.0.0.1 - - [18/Nov/2026:21:44:07 +0000] "POST /ask HTTP/1.1" 200 7162 "-" "Python-urllib/3.13"
+2026-11-18T21:44:07.322690572Z 10.238.26.184 - - [18/Nov/2026:21:44:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:07.32333899Z 10.238.26.184 - - [18/Nov/2026:21:44:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:07.692118073Z 127.0.0.1 - - [18/Nov/2026:21:44:07 +0000] "GET /metrics HTTP/1.1" 200 218 "-" "Python-urllib/3.13"
+2026-11-18T21:44:08.234914523Z [91] parse_query
+2026-11-18T21:44:08.234938755Z       in:  dict with keys: query
+2026-11-18T21:44:08.234942886Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:12.561123201Z [92] search_listings (Via MCP)
+2026-11-18T21:44:12.561143442Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:12.561162303Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:12.561166374Z [93] selected_item
+2026-11-18T21:44:12.561169894Z       in:  dict with keys: search_results
+2026-11-18T21:44:12.561173404Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:44:13.909851018Z [94] suggest_outfit
+2026-11-18T21:44:13.90987815Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:44:13.90988221Z       out: Hey! That 2003 tour bootleg tee is an absolute score for your grunge-streetwear vibe. Since it’s a size L, it’…
+2026-11-18T21:44:14.905858211Z [95] create_fit_card
+2026-11-18T21:44:14.905876923Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:44:14.905880003Z       out: Nothing beats finding the ultimate grunge-streetwear staple to throw on with baggy denim and combat boots. Sna…
+2026-11-18T21:44:14.905898544Z {"event": "ask", "ts": "2026-11-18T21:44:14Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6671, "steps_ms": {"search": 4326, "outfit": 1349, "fit_card": 996}, "model_calls": 2, "cache_hits": 0, "tokens": 883}
+2026-11-18T21:44:14.906452845Z 127.0.0.1 - - [18/Nov/2026:21:44:14 +0000] "POST /ask HTTP/1.1" 200 7162 "-" "Python-urllib/3.13"
+2026-11-18T21:44:14.907226471Z 10.238.26.184 - - [18/Nov/2026:21:44:14 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:15.240148096Z 127.0.0.1 - - [18/Nov/2026:21:44:15 +0000] "GET /metrics HTTP/1.1" 200 218 "-" "Python-urllib/3.13"
+2026-11-18T21:44:15.542881512Z [96] parse_query
+2026-11-18T21:44:15.542897903Z       in:  dict with keys: query
+2026-11-18T21:44:15.542901564Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:19.552906908Z [97] search_listings (Via MCP)
+2026-11-18T21:44:19.55293209Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:19.55293595Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:19.55293915Z [98] selected_item
+2026-11-18T21:44:19.55294209Z       in:  dict with keys: search_results
+2026-11-18T21:44:19.552946581Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:44:20.999830202Z [99] suggest_outfit
+2026-11-18T21:44:20.999857574Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:44:20.999863294Z       out: Hey friend! That 2003 tour tee is an absolute score for your grunge and streetwear vibes. Here are two ways to…
+2026-11-18T21:44:21.992638821Z [100] create_fit_card
+2026-11-18T21:44:21.992661413Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:44:21.992667083Z       out: Channeling peak 2003 garage rock energy with this oversized bootleg tour tee. Snagged it on Depop for $24 and …
+2026-11-18T21:44:21.992683544Z {"event": "ask", "ts": "2026-11-18T21:44:21Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6450, "steps_ms": {"search": 4010, "outfit": 1447, "fit_card": 993}, "model_calls": 2, "cache_hits": 0, "tokens": 812}
+2026-11-18T21:44:21.993254286Z 127.0.0.1 - - [18/Nov/2026:21:44:21 +0000] "POST /ask HTTP/1.1" 200 7055 "-" "Python-urllib/3.13"
+2026-11-18T21:44:21.993878582Z 10.238.26.184 - - [18/Nov/2026:21:44:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:21.99440601Z 10.238.26.184 - - [18/Nov/2026:21:44:21 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:22.250421827Z [101] parse_query
+2026-11-18T21:44:22.250441588Z       in:  dict with keys: query
+2026-11-18T21:44:22.25045615Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:26.547623124Z [102] search_listings (Via MCP)
+2026-11-18T21:44:26.547656776Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:26.547662547Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:26.547667567Z [103] selected_item
+2026-11-18T21:44:26.547672287Z       in:  dict with keys: search_results
+2026-11-18T21:44:26.547677008Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:44:28.261525056Z [104] suggest_outfit
+2026-11-18T21:44:28.261553858Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:44:28.261558079Z       out: Hey there! Grab that 2003 tour tee—it’s an absolute gem for nailing that effortless grunge-streetwear vibe.   …
+2026-11-18T21:44:29.544641387Z [105] create_fit_card
+2026-11-18T21:44:29.544665079Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:44:29.544669199Z       out: Nothing beats a grungy streetwear look anchored by a sick 2003 tour tee. Snagged this bootleg style on Depop f…
+2026-11-18T21:44:29.544674429Z {"event": "ask", "ts": "2026-11-18T21:44:29Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7294, "steps_ms": {"search": 4297, "outfit": 1714, "fit_card": 1283}, "model_calls": 2, "cache_hits": 0, "tokens": 870}
+2026-11-18T21:44:29.545196297Z 127.0.0.1 - - [18/Nov/2026:21:44:29 +0000] "POST /ask HTTP/1.1" 200 7107 "-" "Python-urllib/3.13"
+2026-11-18T21:44:29.545822153Z 10.238.26.184 - - [18/Nov/2026:21:44:29 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:44:29.780060779Z [106] parse_query
+2026-11-18T21:44:29.78008382Z       in:  dict with keys: query
+2026-11-18T21:44:29.780089231Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:33.750872931Z [107] search_listings (Via MCP)
+2026-11-18T21:44:33.750908304Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:33.750915074Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:33.750921095Z [108] selected_item
+2026-11-18T21:44:33.750926865Z       in:  dict with keys: search_results
+2026-11-18T21:44:33.750932146Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:44:34.405024248Z ==> Detected service running on port 10000
+2026-11-18T21:44:34.56547691Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2026-11-18T21:44:54.097952731Z [111] parse_query
+2026-11-18T21:44:54.097973282Z       in:  dict with keys: query
+2026-11-18T21:44:54.097977783Z       out: dict with keys: description, size, max_price
+2026-11-18T21:44:58.157674362Z [112] search_listings (Via MCP)
+2026-11-18T21:44:58.157706424Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:44:58.157711544Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:44:58.157716145Z [113] selected_item
+2026-11-18T21:44:58.157719975Z       in:  dict with keys: search_results
+2026-11-18T21:44:58.157724276Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:01.46909855Z [114] suggest_outfit
+2026-11-18T21:45:01.469128902Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:01.469134743Z       out: Hey friend! That 2003 tour bootleg tee is an absolute score for your grunge-streetwear vibe. Since it’s a size…
+2026-11-18T21:45:02.697762677Z [115] create_fit_card
+2026-11-18T21:45:02.697786728Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:02.697792539Z       out: Channeling pure early-2000s grunge with this oversized bootleg tour tee. Snagged it on Depop for $24 and hones…
+2026-11-18T21:45:02.697798449Z {"event": "ask", "ts": "2026-11-18T21:45:02Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8600, "steps_ms": {"search": 4060, "outfit": 3311, "fit_card": 1229}, "model_calls": 2, "cache_hits": 0, "tokens": 843}
+2026-11-18T21:45:02.698364281Z 127.0.0.1 - - [18/Nov/2026:21:45:02 +0000] "POST /ask HTTP/1.1" 200 7115 "-" "Python-urllib/3.13"
+2026-11-18T21:45:02.69903937Z 10.238.26.184 - - [18/Nov/2026:21:45:02 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:02.699594181Z 10.238.26.184 - - [18/Nov/2026:21:45:02 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:02.974642686Z [116] parse_query
+2026-11-18T21:45:02.974662717Z       in:  dict with keys: query
+2026-11-18T21:45:02.974670158Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:07.353768007Z [117] search_listings (Via MCP)
+2026-11-18T21:45:07.353791309Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:07.353797859Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:07.353849603Z [118] selected_item
+2026-11-18T21:45:07.353859694Z       in:  dict with keys: search_results
+2026-11-18T21:45:07.353865264Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:08.806742655Z [119] suggest_outfit
+2026-11-18T21:45:08.806768226Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:08.806775387Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’ll bring so much grunge-streetwear edge to your …
+2026-11-18T21:45:09.661950682Z [120] create_fit_card
+2026-11-18T21:45:09.661972313Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:09.661978444Z       out: Obsessed with the faded wash on this 2003 tour bootleg tee. Snagged it on Depop for $24 and it's already doing…
+2026-11-18T21:45:09.662004926Z {"event": "ask", "ts": "2026-11-18T21:45:09Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6687, "steps_ms": {"search": 4379, "outfit": 1453, "fit_card": 855}, "model_calls": 2, "cache_hits": 0, "tokens": 828}
+2026-11-18T21:45:09.662526284Z 127.0.0.1 - - [18/Nov/2026:21:45:09 +0000] "POST /ask HTTP/1.1" 200 7037 "-" "Python-urllib/3.13"
+2026-11-18T21:45:09.663394357Z 10.238.26.184 - - [18/Nov/2026:21:45:09 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:09.663935657Z 10.238.26.184 - - [18/Nov/2026:21:45:09 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:09.878868882Z [121] parse_query
+2026-11-18T21:45:09.878885353Z       in:  dict with keys: query
+2026-11-18T21:45:09.878888873Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:14.561657979Z [122] search_listings (Via MCP)
+2026-11-18T21:45:14.561683791Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:14.561687761Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:14.561690891Z [123] selected_item
+2026-11-18T21:45:14.561693682Z       in:  dict with keys: search_results
+2026-11-18T21:45:14.561696452Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:15.738530119Z [124] suggest_outfit
+2026-11-18T21:45:15.73854519Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:15.73854804Z       out: Hey there! That 2003 tour bootleg tee is an amazing find—it adds instant grunge edge to your closet.   **Outfi…
+2026-11-18T21:45:18.294045233Z [125] create_fit_card
+2026-11-18T21:45:18.294064774Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:18.294069315Z       out: Channeling main character energy with this baggy khaki and combat boot combo. Score of the week on Depop for t…
+2026-11-18T21:45:18.294088106Z {"event": "ask", "ts": "2026-11-18T21:45:18Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8415, "steps_ms": {"search": 4683, "outfit": 1177, "fit_card": 2555}, "model_calls": 2, "cache_hits": 0, "tokens": 804}
+2026-11-18T21:45:18.294638816Z 127.0.0.1 - - [18/Nov/2026:21:45:18 +0000] "POST /ask HTTP/1.1" 200 6991 "-" "Python-urllib/3.13"
+2026-11-18T21:45:18.295361139Z 10.238.26.184 - - [18/Nov/2026:21:45:18 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:18.295960793Z 10.238.26.184 - - [18/Nov/2026:21:45:18 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:18.516680934Z [126] parse_query
+2026-11-18T21:45:18.516699355Z       in:  dict with keys: query
+2026-11-18T21:45:18.516702696Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:22.446865211Z [127] search_listings (Via MCP)
+2026-11-18T21:45:22.446893393Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:22.446897603Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:22.446901053Z [128] selected_item
+2026-11-18T21:45:22.446904303Z       in:  dict with keys: search_results
+2026-11-18T21:45:22.446908294Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:25.075444274Z [129] suggest_outfit
+2026-11-18T21:45:25.075470296Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:25.075474186Z       out: Hey! That 2003 tour tee is an amazing find—bootleg styles add the *best* grunge energy to a wardrobe. Since it…
+2026-11-18T21:45:27.440586389Z [130] create_fit_card
+2026-11-18T21:45:27.44060639Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:27.44061076Z       out: Channeling pure 2003 garage-rock energy with this bootleg tour tee. Snagged it on depop for $24 and it's the e…
+2026-11-18T21:45:27.440620701Z {"event": "ask", "ts": "2026-11-18T21:45:27Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8924, "steps_ms": {"search": 3930, "outfit": 2629, "fit_card": 2365}, "model_calls": 2, "cache_hits": 0, "tokens": 876}
+2026-11-18T21:45:27.441262298Z 127.0.0.1 - - [18/Nov/2026:21:45:27 +0000] "POST /ask HTTP/1.1" 200 7107 "-" "Python-urllib/3.13"
+2026-11-18T21:45:27.441876223Z 10.238.26.184 - - [18/Nov/2026:21:45:27 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:27.442474207Z 10.238.26.184 - - [18/Nov/2026:21:45:27 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:27.746049855Z [131] parse_query
+2026-11-18T21:45:27.746080437Z       in:  dict with keys: query
+2026-11-18T21:45:27.746084727Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:31.951953608Z [132] search_listings (Via MCP)
+2026-11-18T21:45:31.95198135Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:31.951986581Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:31.951991621Z [133] selected_item
+2026-11-18T21:45:31.951995811Z       in:  dict with keys: search_results
+2026-11-18T21:45:31.952001391Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:35.39576767Z [134] suggest_outfit
+2026-11-18T21:45:35.395784221Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:35.395788641Z       out: Hey! That 2003 tour bootleg tee is an incredible find—it’ll instantly add that effortless grunge edge to your …
+2026-11-18T21:45:37.195885111Z [135] create_fit_card
+2026-11-18T21:45:37.195909363Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:37.195913614Z       out: That 2003 tour bootleg tee has the ultimate worn-in grunge energy. I honestly can't believe I snagged it on de…
+2026-11-18T21:45:37.195917564Z {"event": "ask", "ts": "2026-11-18T21:45:37Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 9449, "steps_ms": {"search": 4206, "outfit": 3444, "fit_card": 1799}, "model_calls": 2, "cache_hits": 0, "tokens": 884}
+2026-11-18T21:45:37.195921454Z 127.0.0.1 - - [18/Nov/2026:21:45:37 +0000] "POST /ask HTTP/1.1" 200 7167 "-" "Python-urllib/3.13"
+2026-11-18T21:45:37.196867434Z 10.238.26.184 - - [18/Nov/2026:21:45:37 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:37.197670602Z 10.238.26.184 - - [18/Nov/2026:21:45:37 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:37.199863173Z 10.238.26.184 - - [18/Nov/2026:21:45:37 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:37.536228489Z [136] parse_query
+2026-11-18T21:45:37.536280863Z       in:  dict with keys: query
+2026-11-18T21:45:37.536284743Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:41.847008814Z [137] search_listings (Via MCP)
+2026-11-18T21:45:41.847030616Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:41.847035616Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:41.847040227Z [138] selected_item
+2026-11-18T21:45:41.847044657Z       in:  dict with keys: search_results
+2026-11-18T21:45:41.847061968Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:43.060384529Z [139] suggest_outfit
+2026-11-18T21:45:43.060415471Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:43.060420532Z       out: Hey friend! That 2003 tour tee is an absolute score—bootleg style graphics add instant grunge street cred to a…
+2026-11-18T21:45:45.567438748Z [140] create_fit_card
+2026-11-18T21:45:45.567461919Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:45.56746576Z       out: That faded 2003 tour tee brings all the effortless grunge street cred. Managed to snag the bootleg style graph…
+2026-11-18T21:45:45.56746908Z {"event": "ask", "ts": "2026-11-18T21:45:45Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8031, "steps_ms": {"search": 4311, "outfit": 1213, "fit_card": 2507}, "model_calls": 2, "cache_hits": 0, "tokens": 786}
+2026-11-18T21:45:45.568041352Z 127.0.0.1 - - [18/Nov/2026:21:45:45 +0000] "POST /ask HTTP/1.1" 200 6954 "-" "Python-urllib/3.13"
+2026-11-18T21:45:45.568887374Z 10.238.26.184 - - [18/Nov/2026:21:45:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:45.850675954Z 10.238.26.184 - - [18/Nov/2026:21:45:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:46.85622487Z [141] parse_query
+2026-11-18T21:45:46.856245691Z       in:  dict with keys: query
+2026-11-18T21:45:46.856249051Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:51.253644769Z [142] search_listings (Via MCP)
+2026-11-18T21:45:51.253674151Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:51.253678191Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:51.253681442Z [143] selected_item
+2026-11-18T21:45:51.253685022Z       in:  dict with keys: search_results
+2026-11-18T21:45:51.253688452Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:52.650168682Z [144] suggest_outfit
+2026-11-18T21:45:52.650192994Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:52.650197834Z       out: Hey there! That 2003 tour bootleg tee is an absolute score for a grunge-streetwear vibe. Since it’s a size L, …
+2026-11-18T21:45:53.361133274Z [145] create_fit_card
+2026-11-18T21:45:53.361154686Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:45:53.361158786Z       out: Unreal grunge-streetwear energy coming from this 2003 tour bootleg tee. Snagged it on depop for $24 and the ov…
+2026-11-18T21:45:53.361162136Z {"event": "ask", "ts": "2026-11-18T21:45:53Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6505, "steps_ms": {"search": 4397, "outfit": 1396, "fit_card": 711}, "model_calls": 2, "cache_hits": 0, "tokens": 875}
+2026-11-18T21:45:53.361682654Z 127.0.0.1 - - [18/Nov/2026:21:45:53 +0000] "POST /ask HTTP/1.1" 200 7095 "-" "Python-urllib/3.13"
+2026-11-18T21:45:53.362402617Z 10.238.26.184 - - [18/Nov/2026:21:45:53 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:45:53.808305909Z [146] parse_query
+2026-11-18T21:45:53.808328991Z       in:  dict with keys: query
+2026-11-18T21:45:53.808334691Z       out: dict with keys: description, size, max_price
+2026-11-18T21:45:57.847462684Z [147] search_listings (Via MCP)
+2026-11-18T21:45:57.847481406Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:45:57.847485016Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:45:57.847488706Z [148] selected_item
+2026-11-18T21:45:57.847507217Z       in:  dict with keys: search_results
+2026-11-18T21:45:57.847511358Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:45:58.989700157Z [149] suggest_outfit
+2026-11-18T21:45:58.989722218Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:45:58.989726969Z       out: You *totally* need this 2003 tour bootleg tee—it’s pure grunge gold! Here are two effortless ways to style it …
+2026-11-18T21:46:00.126875179Z [150] create_fit_card
+2026-11-18T21:46:00.126905071Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:00.126909151Z       out: Pure mid-2000s indie sleaze energy right here. Just snagged this 2003 tour bootleg tee on depop for $24 and I'…
+2026-11-18T21:46:00.126914872Z {"event": "ask", "ts": "2026-11-18T21:46:00Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6319, "steps_ms": {"search": 4039, "outfit": 1142, "fit_card": 1137}, "model_calls": 2, "cache_hits": 0, "tokens": 837}
+2026-11-18T21:46:00.127422039Z 127.0.0.1 - - [18/Nov/2026:21:46:00 +0000] "POST /ask HTTP/1.1" 200 7036 "-" "Python-urllib/3.13"
+2026-11-18T21:46:00.128104489Z 10.238.26.184 - - [18/Nov/2026:21:46:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:00.301490405Z 127.0.0.1 - - [18/Nov/2026:21:46:00 +0000] "POST /ask HTTP/1.1" 400 96 "-" "Python-urllib/3.13"
+2026-11-18T21:46:00.606195548Z [151] parse_query
+2026-11-18T21:46:00.606215859Z       in:  dict with keys: query
+2026-11-18T21:46:00.60622011Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:04.950562758Z [152] search_listings (Via MCP)
+2026-11-18T21:46:04.950578809Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:04.95058225Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:04.95058502Z [153] selected_item
+2026-11-18T21:46:04.95058769Z       in:  dict with keys: search_results
+2026-11-18T21:46:04.950591741Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:06.366474202Z [154] suggest_outfit
+2026-11-18T21:46:06.366503304Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:06.366508194Z       out: Hey there! That 2003 tour bootleg tee is an absolute score for a grunge-streetwear vibe. Since it’s a size L, …
+2026-11-18T21:46:06.366528036Z   [rate limit] 15 requests used this minute. Waiting 1s. This is normal.
+2026-11-18T21:46:08.831007458Z [155] create_fit_card
+2026-11-18T21:46:08.831025179Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:08.831029239Z       out: Nothing beats that heavy, broken-in cotton feel of an early 2000s tour bootleg tee. Snagged this piece for $24…
+2026-11-18T21:46:08.83103218Z {"event": "ask", "ts": "2026-11-18T21:46:08Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 8225, "steps_ms": {"search": 4344, "outfit": 1416, "fit_card": 2465}, "model_calls": 2, "cache_hits": 0, "tokens": 874}
+2026-11-18T21:46:08.831504124Z 127.0.0.1 - - [18/Nov/2026:21:46:08 +0000] "POST /ask HTTP/1.1" 200 7159 "-" "Python-urllib/3.13"
+2026-11-18T21:46:08.832116499Z 10.238.26.184 - - [18/Nov/2026:21:46:08 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:08.832547181Z 10.238.26.184 - - [18/Nov/2026:21:46:08 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:08.833062508Z 10.238.26.184 - - [18/Nov/2026:21:46:08 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:09.146471513Z [156] parse_query
+2026-11-18T21:46:09.146490464Z       in:  dict with keys: query
+2026-11-18T21:46:09.146505196Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:13.25270476Z [157] search_listings (Via MCP)
+2026-11-18T21:46:13.252729021Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:13.252732222Z       out: [] (empty)
+2026-11-18T21:46:13.252734192Z [158] branch: search empty
+2026-11-18T21:46:13.252736052Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:13.252738382Z       out: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try…
+2026-11-18T21:46:13.252740392Z       →    suggest_outfit and create_fit_card not called
+2026-11-18T21:46:13.252748553Z {"event": "ask", "ts": "2026-11-18T21:46:13Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "total_ms": 4106, "steps_ms": {"search": 4106}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+2026-11-18T21:46:13.253286282Z 127.0.0.1 - - [18/Nov/2026:21:46:13 +0000] "POST /ask HTTP/1.1" 200 2056 "-" "Python-urllib/3.13"
+2026-11-18T21:46:13.253973733Z 10.238.26.184 - - [18/Nov/2026:21:46:13 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:13.497618607Z [159] parse_query
+2026-11-18T21:46:13.497635659Z       in:  dict with keys: query
+2026-11-18T21:46:13.497639539Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:17.759231394Z [160] search_listings (Via MCP)
+2026-11-18T21:46:17.759262907Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:17.759272177Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:17.759278198Z [161] selected_item
+2026-11-18T21:46:17.759283418Z       in:  dict with keys: search_results
+2026-11-18T21:46:17.759288869Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:23.54059695Z [162] suggest_outfit
+2026-11-18T21:46:23.540615031Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:23.540620622Z       out: Hey there! That 2003 tour bootleg tee is an amazing find—it adds instant grunge edge to your closet.   **Outfi…
+2026-11-18T21:46:24.67662418Z [163] create_fit_card
+2026-11-18T21:46:24.676647552Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:24.676654492Z       out: Channeling peak 2003 garage-rock energy with this bootleg tour tee. Snagged it on Depop for $24 and it's alrea…
+2026-11-18T21:46:24.676674734Z {"event": "ask", "ts": "2026-11-18T21:46:24Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11179, "steps_ms": {"search": 4262, "outfit": 5781, "fit_card": 1136}, "model_calls": 2, "cache_hits": 0, "tokens": 802}
+2026-11-18T21:46:24.677191302Z 127.0.0.1 - - [18/Nov/2026:21:46:24 +0000] "POST /ask HTTP/1.1" 200 7029 "-" "Python-urllib/3.13"
+2026-11-18T21:46:24.677846359Z 10.238.26.184 - - [18/Nov/2026:21:46:24 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:24.678347876Z 10.238.26.184 - - [18/Nov/2026:21:46:24 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:24.944118974Z [164] parse_query
+2026-11-18T21:46:24.944138145Z       in:  dict with keys: query
+2026-11-18T21:46:24.944142275Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:29.650769034Z [165] search_listings (Via MCP)
+2026-11-18T21:46:29.650793515Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:29.650799046Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:29.650834318Z [166] selected_item
+2026-11-18T21:46:29.650840209Z       in:  dict with keys: search_results
+2026-11-18T21:46:29.650843559Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:31.148420339Z [167] suggest_outfit
+2026-11-18T21:46:31.14844223Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:31.14844628Z       out: Hey there! That 2003 tour bootleg tee is an absolute score for nailing that effortless grunge-streetwear vibe.…
+2026-11-18T21:46:32.658402286Z [168] create_fit_card
+2026-11-18T21:46:32.658428438Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:32.658432529Z       out: Chasing that muddy 2000s garage-rock aesthetic is too easy when you score a bootleg tour tee like this. Snagge…
+2026-11-18T21:46:32.658435989Z {"event": "ask", "ts": "2026-11-18T21:46:32Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7714, "steps_ms": {"search": 4707, "outfit": 1498, "fit_card": 1510}, "model_calls": 2, "cache_hits": 0, "tokens": 909}
+2026-11-18T21:46:32.659007231Z 127.0.0.1 - - [18/Nov/2026:21:46:32 +0000] "POST /ask HTTP/1.1" 200 7248 "-" "Python-urllib/3.13"
+2026-11-18T21:46:32.659745505Z 10.238.26.184 - - [18/Nov/2026:21:46:32 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:32.660328847Z 10.238.26.184 - - [18/Nov/2026:21:46:32 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:32.884637649Z 127.0.0.1 - - [18/Nov/2026:21:46:32 +0000] "POST /ask HTTP/1.1" 400 96 "-" "Python-urllib/3.13"
+2026-11-18T21:46:33.1154773Z [169] parse_query
+2026-11-18T21:46:33.115497831Z       in:  dict with keys: query
+2026-11-18T21:46:33.115500881Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:37.051970516Z [170] search_listings (Via MCP)
+2026-11-18T21:46:37.051996548Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:37.052002158Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:37.052006568Z [171] selected_item
+2026-11-18T21:46:37.052011218Z       in:  dict with keys: search_results
+2026-11-18T21:46:37.052018899Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:39.093745735Z [172] suggest_outfit
+2026-11-18T21:46:39.093770067Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:39.093776058Z       out: Hey there! Grab that 2003 tour tee—it’s an awesome find with so much grunge potential. Here are two ways to st…
+2026-11-18T21:46:40.517058914Z [173] create_fit_card
+2026-11-18T21:46:40.517079966Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:40.517084006Z       out: Unlocked the ultimate grungy, early-2000s outfit formula. Snagged this bootleg tour tee on Depop for $24 and I…
+2026-11-18T21:46:40.517105497Z {"event": "ask", "ts": "2026-11-18T21:46:40Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7402, "steps_ms": {"search": 3936, "outfit": 2042, "fit_card": 1423}, "model_calls": 2, "cache_hits": 0, "tokens": 838}
+2026-11-18T21:46:40.517696591Z 127.0.0.1 - - [18/Nov/2026:21:46:40 +0000] "POST /ask HTTP/1.1" 200 7060 "-" "Python-urllib/3.13"
+2026-11-18T21:46:40.518518661Z 10.238.26.184 - - [18/Nov/2026:21:46:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:40.519080392Z 10.238.26.184 - - [18/Nov/2026:21:46:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:40.811471829Z [174] parse_query
+2026-11-18T21:46:40.811489191Z       in:  dict with keys: query
+2026-11-18T21:46:40.811492371Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:45.358400815Z [175] search_listings (Via MCP)
+2026-11-18T21:46:45.358421737Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:45.358426357Z       out: [] (empty)
+2026-11-18T21:46:45.358429457Z [176] branch: search empty
+2026-11-18T21:46:45.358432548Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:45.358435938Z       out: Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try…
+2026-11-18T21:46:45.358438768Z       →    suggest_outfit and create_fit_card not called
+2026-11-18T21:46:45.358449789Z {"event": "ask", "ts": "2026-11-18T21:46:45Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "total_ms": 4547, "steps_ms": {"search": 4547}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+2026-11-18T21:46:45.439848158Z 127.0.0.1 - - [18/Nov/2026:21:46:45 +0000] "POST /ask HTTP/1.1" 200 2056 "-" "Python-urllib/3.13"
+2026-11-18T21:46:45.440862403Z 10.238.26.184 - - [18/Nov/2026:21:46:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:45.605200135Z [177] parse_query
+2026-11-18T21:46:45.605217216Z       in:  dict with keys: query
+2026-11-18T21:46:45.605220896Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:49.454973448Z [178] search_listings (Via MCP)
+2026-11-18T21:46:49.454991789Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:49.45499606Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:49.45499948Z [179] selected_item
+2026-11-18T21:46:49.45500326Z       in:  dict with keys: search_results
+2026-11-18T21:46:49.4550067Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:51.314600082Z [180] suggest_outfit
+2026-11-18T21:46:51.314628475Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:51.314633715Z       out: Hey there! You *totally* need to grab that 2003 tour bootleg tee. It’s got that effortless, grungy edge that w…
+2026-11-18T21:46:52.123569854Z [181] create_fit_card
+2026-11-18T21:46:52.123590215Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:46:52.123598626Z       out: Nothing beats a grungy bootleg tee for effortless off-duty days. Snagged this 2003 tour graphic on Depop for $…
+2026-11-18T21:46:52.123604187Z {"event": "ask", "ts": "2026-11-18T21:46:52Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6518, "steps_ms": {"search": 3850, "outfit": 1860, "fit_card": 809}, "model_calls": 2, "cache_hits": 0, "tokens": 885}
+2026-11-18T21:46:52.124100143Z 127.0.0.1 - - [18/Nov/2026:21:46:52 +0000] "POST /ask HTTP/1.1" 200 7170 "-" "Python-urllib/3.13"
+2026-11-18T21:46:52.124667404Z 10.238.26.184 - - [18/Nov/2026:21:46:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:52.125181932Z 10.238.26.184 - - [18/Nov/2026:21:46:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:46:52.828375139Z 127.0.0.1 - - [18/Nov/2026:21:46:52 +0000] "GET /metrics HTTP/1.1" 200 218 "-" "Python-urllib/3.13"
+2026-11-18T21:46:53.331631726Z [182] parse_query
+2026-11-18T21:46:53.331654368Z       in:  dict with keys: query
+2026-11-18T21:46:53.33168612Z       out: dict with keys: description, size, max_price
+2026-11-18T21:46:57.762747496Z [183] search_listings (Via MCP)
+2026-11-18T21:46:57.762776558Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:46:57.762781498Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:46:57.762849683Z [184] selected_item
+2026-11-18T21:46:57.762855293Z       in:  dict with keys: search_results
+2026-11-18T21:46:57.762858854Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:46:59.67653018Z [185] suggest_outfit
+2026-11-18T21:46:59.676551261Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:46:59.676555491Z       out: Hey! That 2003 tour bootleg tee is an absolute score for adding some authentic grunge edge to your wardrobe. S…
+2026-11-18T21:47:00.623195703Z [186] create_fit_card
+2026-11-18T21:47:00.623225645Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:00.623229936Z       out: That 2003 tour bootleg tee is bringing all the heavy-metal nostalgia I've been looking for. Snagged it on Depo…
+2026-11-18T21:47:00.623233086Z {"event": "ask", "ts": "2026-11-18T21:47:00Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7292, "steps_ms": {"search": 4430, "outfit": 1914, "fit_card": 947}, "model_calls": 2, "cache_hits": 0, "tokens": 861}
+2026-11-18T21:47:00.623750744Z 127.0.0.1 - - [18/Nov/2026:21:47:00 +0000] "POST /ask HTTP/1.1" 200 7147 "-" "Python-urllib/3.13"
+2026-11-18T21:47:00.624427973Z 10.238.26.184 - - [18/Nov/2026:21:47:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:00.850514197Z 10.238.26.184 - - [18/Nov/2026:21:47:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:00.958536806Z 127.0.0.1 - - [18/Nov/2026:21:47:00 +0000] "GET /metrics HTTP/1.1" 200 218 "-" "Python-urllib/3.13"
+2026-11-18T21:47:01.208353657Z [187] parse_query
+2026-11-18T21:47:01.208376149Z       in:  dict with keys: query
+2026-11-18T21:47:01.208380109Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:05.156344863Z [188] search_listings (Via MCP)
+2026-11-18T21:47:05.156371905Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:05.156375855Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:05.156379135Z [189] selected_item
+2026-11-18T21:47:05.156382226Z       in:  dict with keys: search_results
+2026-11-18T21:47:05.156385376Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:06.304481817Z [190] suggest_outfit
+2026-11-18T21:47:06.304505959Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:06.30451095Z       out: Hey there! Snagging a 2003 tour tee is an absolute win for your grunge and streetwear vibe. Here are two effor…
+2026-11-18T21:47:07.58048226Z [191] create_fit_card
+2026-11-18T21:47:07.580507822Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:07.580512002Z       out: Nostalgic tour merch is the easiest way to pull off effortless grunge without trying too hard. Managed to snag…
+2026-11-18T21:47:07.580529804Z {"event": "ask", "ts": "2026-11-18T21:47:07Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6372, "steps_ms": {"search": 3948, "outfit": 1148, "fit_card": 1276}, "model_calls": 2, "cache_hits": 0, "tokens": 881}
+2026-11-18T21:47:07.581113076Z 127.0.0.1 - - [18/Nov/2026:21:47:07 +0000] "POST /ask HTTP/1.1" 200 7229 "-" "Python-urllib/3.13"
+2026-11-18T21:47:07.581741192Z 10.238.26.184 - - [18/Nov/2026:21:47:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:07.582276271Z 10.238.26.184 - - [18/Nov/2026:21:47:07 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:07.864684471Z [192] parse_query
+2026-11-18T21:47:07.864707393Z       in:  dict with keys: query
+2026-11-18T21:47:07.864711753Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:12.153163343Z [193] search_listings (Via MCP)
+2026-11-18T21:47:12.153183924Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:12.153188595Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:12.153192415Z [194] selected_item
+2026-11-18T21:47:12.153195885Z       in:  dict with keys: search_results
+2026-11-18T21:47:12.153199186Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:13.794287207Z [195] suggest_outfit
+2026-11-18T21:47:13.794306568Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:13.794312599Z       out: Hey there! That 2003 tour bootleg tee is an absolute score—it’s going to add the coolest grunge edge to your c…
+2026-11-18T21:47:20.151764156Z [196] create_fit_card
+2026-11-18T21:47:20.151786877Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:20.151792158Z       out: Nothing beats finding the exact kind of muddy, 2003 tour bootleg graphic tee I’ve been hunting for. Snagged it…
+2026-11-18T21:47:20.151798858Z {"event": "ask", "ts": "2026-11-18T21:47:20Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 12287, "steps_ms": {"search": 4288, "outfit": 1641, "fit_card": 6357}, "model_calls": 2, "cache_hits": 0, "tokens": 911}
+2026-11-18T21:47:20.152329917Z 127.0.0.1 - - [18/Nov/2026:21:47:20 +0000] "POST /ask HTTP/1.1" 200 7185 "-" "Python-urllib/3.13"
+2026-11-18T21:47:20.152965753Z 10.238.26.184 - - [18/Nov/2026:21:47:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:20.153422457Z 10.238.26.184 - - [18/Nov/2026:21:47:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:20.473939047Z [197] parse_query
+2026-11-18T21:47:20.473955338Z       in:  dict with keys: query
+2026-11-18T21:47:20.473958799Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:24.860063854Z [198] search_listings (Via MCP)
+2026-11-18T21:47:24.860101237Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:24.860107827Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:24.860113457Z [199] selected_item
+2026-11-18T21:47:24.860118368Z       in:  dict with keys: search_results
+2026-11-18T21:47:24.860123238Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:26.083581792Z [200] suggest_outfit
+2026-11-18T21:47:26.083614444Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:26.083620565Z       out: Hey there! That 2003 tour bootleg tee is an amazing find—it’ll instantly add that effortless, lived-in grunge …
+2026-11-18T21:47:27.079295821Z [201] create_fit_card
+2026-11-18T21:47:27.079325743Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:27.079331524Z       out: Nothing beats that perfectly worn-in grunge feel. This 2003 tour bootleg tee from Depop for $24 is about to be…
+2026-11-18T21:47:27.079344214Z {"event": "ask", "ts": "2026-11-18T21:47:27Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 6606, "steps_ms": {"search": 4387, "outfit": 1223, "fit_card": 996}, "model_calls": 2, "cache_hits": 0, "tokens": 851}
+2026-11-18T21:47:27.07996977Z 127.0.0.1 - - [18/Nov/2026:21:47:27 +0000] "POST /ask HTTP/1.1" 200 7137 "-" "Python-urllib/3.13"
+2026-11-18T21:47:27.080905909Z 10.238.26.184 - - [18/Nov/2026:21:47:27 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:27.081408036Z 10.238.26.184 - - [18/Nov/2026:21:47:27 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:27.41705906Z [202] parse_query
+2026-11-18T21:47:27.417082612Z       in:  dict with keys: query
+2026-11-18T21:47:27.417087442Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:31.34721915Z [203] search_listings (Via MCP)
+2026-11-18T21:47:31.347244732Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:31.347249012Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:31.347252722Z [204] selected_item
+2026-11-18T21:47:31.347255922Z       in:  dict with keys: search_results
+2026-11-18T21:47:31.347258902Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:32.578031211Z [205] suggest_outfit
+2026-11-18T21:47:32.578053583Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:32.578057643Z       out: Hey friend! You *need* that 2003 tour bootleg tee—it’s the ultimate grunge-streetwear staple. Here are two way…
+2026-11-18T21:47:33.294758715Z [206] create_fit_card
+2026-11-18T21:47:33.294783147Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:33.294787577Z       out: Channeling heavy 90s skater energy with this vintage-look graphic tee. Snagged the bootleg tour piece on depop…
+2026-11-18T21:47:33.294791448Z {"event": "ask", "ts": "2026-11-18T21:47:33Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 5878, "steps_ms": {"search": 3930, "outfit": 1231, "fit_card": 717}, "model_calls": 2, "cache_hits": 0, "tokens": 843}
+2026-11-18T21:47:33.295347168Z 127.0.0.1 - - [18/Nov/2026:21:47:33 +0000] "POST /ask HTTP/1.1" 200 7096 "-" "Python-urllib/3.13"
+2026-11-18T21:47:33.296216572Z 10.238.26.184 - - [18/Nov/2026:21:47:33 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:33.607918263Z [207] parse_query
+2026-11-18T21:47:33.607938334Z       in:  dict with keys: query
+2026-11-18T21:47:33.607941794Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:38.249520089Z [208] search_listings (Via MCP)
+2026-11-18T21:47:38.249547411Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:38.249551532Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:38.249554882Z [209] selected_item
+2026-11-18T21:47:38.249558242Z       in:  dict with keys: search_results
+2026-11-18T21:47:38.249561702Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:39.626423913Z [210] suggest_outfit
+2026-11-18T21:47:39.626450955Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:39.626455435Z       out: Hey! That 2003 tour bootleg tee is an amazing find—it’s going to add the coolest grunge-streetwear edge to you…
+2026-11-18T21:47:40.72072056Z [211] create_fit_card
+2026-11-18T21:47:40.720747252Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:40.720751932Z       out: Slouchy, faded, and looks like I actually bought it at a muddy venue back in '03. Bagged this bootleg tour tee…
+2026-11-18T21:47:40.720758123Z {"event": "ask", "ts": "2026-11-18T21:47:40Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7113, "steps_ms": {"search": 4641, "outfit": 1377, "fit_card": 1094}, "model_calls": 2, "cache_hits": 0, "tokens": 873}
+2026-11-18T21:47:40.721445233Z 127.0.0.1 - - [18/Nov/2026:21:47:40 +0000] "POST /ask HTTP/1.1" 200 7110 "-" "Python-urllib/3.13"
+2026-11-18T21:47:40.722066548Z 10.238.26.184 - - [18/Nov/2026:21:47:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:40.722751629Z 10.238.26.184 - - [18/Nov/2026:21:47:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:40.851019952Z 10.238.26.184 - - [18/Nov/2026:21:47:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:41.062675942Z [212] parse_query
+2026-11-18T21:47:41.062693243Z       in:  dict with keys: query
+2026-11-18T21:47:41.062696553Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:45.254451193Z [213] search_listings (Via MCP)
+2026-11-18T21:47:45.254478815Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:45.254483135Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:45.254486336Z [214] selected_item
+2026-11-18T21:47:45.254489576Z       in:  dict with keys: search_results
+2026-11-18T21:47:45.254492866Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:47:46.697354719Z [215] suggest_outfit
+2026-11-18T21:47:46.697401793Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:47:46.697407813Z       out: Hey! That 2003 tour bootleg tee is an absolute score for your grunge and streetwear vibes. Since it's a size L…
+2026-11-18T21:47:46.697430505Z   [rate limit] 15 requests used this minute. Waiting 3s. This is normal.
+2026-11-18T21:47:52.906930027Z [216] create_fit_card
+2026-11-18T21:47:52.9069554Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:47:52.9069605Z       out: Nailing that slouchy 2000s grunge look is way too easy with this 2003 tour bootleg tee. Snagged it on depop fo…
+2026-11-18T21:47:52.90696523Z {"event": "ask", "ts": "2026-11-18T21:47:52Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11844, "steps_ms": {"search": 4192, "outfit": 1443, "fit_card": 6210}, "model_calls": 2, "cache_hits": 0, "tokens": 881}
+2026-11-18T21:47:52.907437385Z 127.0.0.1 - - [18/Nov/2026:21:47:52 +0000] "POST /ask HTTP/1.1" 200 7160 "-" "Python-urllib/3.13"
+2026-11-18T21:47:52.908116134Z 10.238.26.184 - - [18/Nov/2026:21:47:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:52.908657414Z 10.238.26.184 - - [18/Nov/2026:21:47:52 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:47:53.317543168Z [217] parse_query
+2026-11-18T21:47:53.317563879Z       in:  dict with keys: query
+2026-11-18T21:47:53.317567779Z       out: dict with keys: description, size, max_price
+2026-11-18T21:47:57.350773619Z [218] search_listings (Via MCP)
+2026-11-18T21:47:57.350828543Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:47:57.350838524Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:47:57.350843694Z [219] selected_item
+2026-11-18T21:47:57.350851405Z       in:  dict with keys: search_results
+2026-11-18T21:47:57.350856195Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:48:04.091016167Z [220] suggest_outfit
+2026-11-18T21:48:04.091048899Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:48:04.09105372Z       out: Hey friend! You *definitely* need to grab this 2003 tour tee—it’s going to bring so much effortless grunge ene…
+2026-11-18T21:48:05.044973482Z [221] create_fit_card
+2026-11-18T21:48:05.045007405Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:48:05.045014005Z       out: Channelling peak 2003 grunge energy with this bootleg tour tee. Snagged it on depop for $24 and I'm already li…
+2026-11-18T21:48:05.045042017Z {"event": "ask", "ts": "2026-11-18T21:48:05Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 11728, "steps_ms": {"search": 4033, "outfit": 6740, "fit_card": 954}, "model_calls": 2, "cache_hits": 0, "tokens": 818}
+2026-11-18T21:48:05.045529873Z 127.0.0.1 - - [18/Nov/2026:21:48:05 +0000] "POST /ask HTTP/1.1" 200 6992 "-" "Python-urllib/3.13"
+2026-11-18T21:48:05.046227574Z 10.238.26.184 - - [18/Nov/2026:21:48:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:05.046757593Z 10.238.26.184 - - [18/Nov/2026:21:48:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:05.462752075Z [222] parse_query
+2026-11-18T21:48:05.462771006Z       in:  dict with keys: query
+2026-11-18T21:48:05.462776387Z       out: dict with keys: description, size, max_price
+2026-11-18T21:48:09.55202119Z [223] search_listings (Via MCP)
+2026-11-18T21:48:09.552045762Z       in:  dict with keys: description, size, max_price
+2026-11-18T21:48:09.552049732Z       out: 10 items: Graphic Tee — 2003 Tour Bootleg Style, Vintage Band Tee — Faded Grey, Y2K Baby Tee — Butterfly Print … +7 more
+2026-11-18T21:48:09.552052902Z [224] selected_item
+2026-11-18T21:48:09.552056352Z       in:  dict with keys: search_results
+2026-11-18T21:48:09.552059633Z       out: Graphic Tee — 2003 Tour Bootleg Style ($24.0, depop)
+2026-11-18T21:48:10.599643454Z [2026-11-18 21:48:10 +0000] [57] [INFO] Handling signal: term
+2026-11-18T21:48:11.221796393Z [225] suggest_outfit
+2026-11-18T21:48:11.221841466Z       in:  dict with keys: selected_item, wardrobe
+2026-11-18T21:48:11.221846136Z       out: Hey friend! You *definitely* need to grab that 2003 tour bootleg tee—it’s going to add the coolest grunge edge…
+2026-11-18T21:48:12.545800794Z [226] create_fit_card
+2026-11-18T21:48:12.545852378Z       in:  dict with keys: outfit_suggestion, selected_item
+2026-11-18T21:48:12.545855948Z       out: Finally locked down this 2003 tour bootleg tee to add some worn-in, heavy-metal energy to my rotation. Snagged…
+2026-11-18T21:48:12.545868359Z {"event": "ask", "ts": "2026-11-18T21:48:12Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "total_ms": 7083, "steps_ms": {"search": 4089, "outfit": 1670, "fit_card": 1324}, "model_calls": 2, "cache_hits": 0, "tokens": 963}
+2026-11-18T21:48:12.546373596Z 127.0.0.1 - - [18/Nov/2026:21:48:12 +0000] "POST /ask HTTP/1.1" 200 7321 "-" "Python-urllib/3.13"
+2026-11-18T21:48:12.546631105Z [2026-11-18 21:48:12 +0000] [59] [INFO] Worker exiting (pid: 59)
+2026-11-18T21:48:14.839847729Z [2026-11-18 21:48:14 +0000] [57] [INFO] Shutting down: Master
+2026-11-18T21:48:16.537219664Z ==> Instance srv-dbv1lnff3r2c73eq0tp0-f4slr restarted
+2026-11-18T21:48:21.460207104Z ==> Running 'gunicorn serve:app --timeout 120'
+2026-11-18T21:48:27.362522143Z [2026-11-18 21:48:27 +0000] [38] [INFO] Starting gunicorn 23.0.0
+2026-11-18T21:48:27.362885639Z [2026-11-18 21:48:27 +0000] [38] [INFO] Listening at: http://0.0.0.0:10000 (38)
+2026-11-18T21:48:27.362910331Z [2026-11-18 21:48:27 +0000] [38] [INFO] Using worker: sync
+2026-11-18T21:48:27.367250139Z [2026-11-18 21:48:27 +0000] [39] [INFO] Booting worker with pid: 39
+2026-11-18T21:48:30.534402299Z 10.238.26.184 - - [18/Nov/2026:21:48:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:30.559351602Z 10.238.26.184 - - [18/Nov/2026:21:48:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:35.516881976Z 10.238.26.184 - - [18/Nov/2026:21:48:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:35.537303934Z 10.238.26.184 - - [18/Nov/2026:21:48:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:40.537474528Z 10.238.26.184 - - [18/Nov/2026:21:48:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:45.537494995Z 10.238.26.184 - - [18/Nov/2026:21:48:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:50.537206049Z 10.238.26.184 - - [18/Nov/2026:21:48:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:48:55.541640098Z 10.238.26.184 - - [18/Nov/2026:21:48:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:00.537173367Z 10.238.26.184 - - [18/Nov/2026:21:49:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:05.516771737Z 10.238.26.184 - - [18/Nov/2026:21:49:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:05.536579578Z 10.238.26.184 - - [18/Nov/2026:21:49:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:10.539668549Z 10.238.26.184 - - [18/Nov/2026:21:49:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:15.537185431Z 10.238.26.184 - - [18/Nov/2026:21:49:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:20.53768803Z 10.238.26.184 - - [18/Nov/2026:21:49:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:25.537285603Z 10.238.26.184 - - [18/Nov/2026:21:49:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:30.538059872Z 10.238.26.184 - - [18/Nov/2026:21:49:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:35.516323114Z 10.238.26.184 - - [18/Nov/2026:21:49:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:35.53729322Z 10.238.26.184 - - [18/Nov/2026:21:49:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:40.536879114Z 10.238.26.184 - - [18/Nov/2026:21:49:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:45.537199722Z 10.238.26.184 - - [18/Nov/2026:21:49:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:50.537674216Z 10.238.26.184 - - [18/Nov/2026:21:49:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:49:55.538874907Z 10.238.26.184 - - [18/Nov/2026:21:49:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:00.537024934Z 10.238.26.184 - - [18/Nov/2026:21:50:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:05.518161747Z 10.238.26.184 - - [18/Nov/2026:21:50:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:05.538235236Z 10.238.26.184 - - [18/Nov/2026:21:50:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:10.537322046Z 10.238.26.184 - - [18/Nov/2026:21:50:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:15.541423894Z 10.238.26.184 - - [18/Nov/2026:21:50:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:20.537563569Z 10.238.26.184 - - [18/Nov/2026:21:50:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:25.537694345Z 10.238.26.184 - - [18/Nov/2026:21:50:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:30.537009434Z 10.238.26.184 - - [18/Nov/2026:21:50:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:35.516661133Z 10.238.26.184 - - [18/Nov/2026:21:50:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:35.537220378Z 10.238.26.184 - - [18/Nov/2026:21:50:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:40.537390229Z 10.238.26.184 - - [18/Nov/2026:21:50:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:45.537720664Z 10.238.26.184 - - [18/Nov/2026:21:50:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:50.53722447Z 10.238.26.184 - - [18/Nov/2026:21:50:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:50:55.537566045Z 10.238.26.184 - - [18/Nov/2026:21:50:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:00.537729596Z 10.238.26.184 - - [18/Nov/2026:21:51:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:05.516652662Z 10.238.26.184 - - [18/Nov/2026:21:51:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:05.537434873Z 10.238.26.184 - - [18/Nov/2026:21:51:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:10.536963351Z 10.238.26.184 - - [18/Nov/2026:21:51:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:15.537033334Z 10.238.26.184 - - [18/Nov/2026:21:51:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:20.537906217Z 10.238.26.184 - - [18/Nov/2026:21:51:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:25.537262918Z 10.238.26.184 - - [18/Nov/2026:21:51:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:30.537197227Z 10.238.26.184 - - [18/Nov/2026:21:51:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:35.516704066Z 10.238.26.184 - - [18/Nov/2026:21:51:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:35.53670595Z 10.238.26.184 - - [18/Nov/2026:21:51:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:40.537501518Z 10.238.26.184 - - [18/Nov/2026:21:51:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:45.537234128Z 10.238.26.184 - - [18/Nov/2026:21:51:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:50.537894453Z 10.238.26.184 - - [18/Nov/2026:21:51:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:51:55.537084219Z 10.238.26.184 - - [18/Nov/2026:21:51:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:00.53706572Z 10.238.26.184 - - [18/Nov/2026:21:52:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:05.516905553Z 10.238.26.184 - - [18/Nov/2026:21:52:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:05.536928549Z 10.238.26.184 - - [18/Nov/2026:21:52:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:10.538828536Z 10.238.26.184 - - [18/Nov/2026:21:52:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:15.537370707Z 10.238.26.184 - - [18/Nov/2026:21:52:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:20.537317172Z 10.238.26.184 - - [18/Nov/2026:21:52:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:25.537496223Z 10.238.26.184 - - [18/Nov/2026:21:52:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:30.537433017Z 10.238.26.184 - - [18/Nov/2026:21:52:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:35.516734775Z 10.238.26.184 - - [18/Nov/2026:21:52:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:35.537047832Z 10.238.26.184 - - [18/Nov/2026:21:52:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:40.53697594Z 10.238.26.184 - - [18/Nov/2026:21:52:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:45.537359112Z 10.238.26.184 - - [18/Nov/2026:21:52:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:50.537723904Z 10.238.26.184 - - [18/Nov/2026:21:52:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:52:55.537004917Z 10.238.26.184 - - [18/Nov/2026:21:52:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:00.537762259Z 10.238.26.184 - - [18/Nov/2026:21:53:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:05.517013876Z 10.238.26.184 - - [18/Nov/2026:21:53:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:05.537622903Z 10.238.26.184 - - [18/Nov/2026:21:53:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:10.537623476Z 10.238.26.184 - - [18/Nov/2026:21:53:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:15.536754326Z 10.238.26.184 - - [18/Nov/2026:21:53:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:20.537499226Z 10.238.26.184 - - [18/Nov/2026:21:53:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:25.536892919Z 10.238.26.184 - - [18/Nov/2026:21:53:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:30.537496693Z 10.238.26.184 - - [18/Nov/2026:21:53:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:35.531937256Z 10.238.26.184 - - [18/Nov/2026:21:53:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:35.537850478Z 10.238.26.184 - - [18/Nov/2026:21:53:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:40.537431924Z 10.238.26.184 - - [18/Nov/2026:21:53:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:45.537519398Z 10.238.26.184 - - [18/Nov/2026:21:53:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:50.537889644Z 10.238.26.184 - - [18/Nov/2026:21:53:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:53:55.537617946Z 10.238.26.184 - - [18/Nov/2026:21:53:55 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:00.537036736Z 10.238.26.184 - - [18/Nov/2026:21:54:00 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:05.516921357Z 10.238.26.184 - - [18/Nov/2026:21:54:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:05.537299289Z 10.238.26.184 - - [18/Nov/2026:21:54:05 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:10.537659486Z 10.238.26.184 - - [18/Nov/2026:21:54:10 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:15.537191289Z 10.238.26.184 - - [18/Nov/2026:21:54:15 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:20.537353428Z 10.238.26.184 - - [18/Nov/2026:21:54:20 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:25.536850695Z 10.238.26.184 - - [18/Nov/2026:21:54:25 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:30.538158798Z 10.238.26.184 - - [18/Nov/2026:21:54:30 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:35.518295181Z 10.238.26.184 - - [18/Nov/2026:21:54:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:35.537386108Z 10.238.26.184 - - [18/Nov/2026:21:54:35 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:40.537213105Z 10.238.26.184 - - [18/Nov/2026:21:54:40 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:45.537292914Z 10.238.26.184 - - [18/Nov/2026:21:54:45 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"
+2026-11-18T21:54:50.537359872Z 10.238.26.184 - - [18/Nov/2026:21:54:50 +0000] "GET /health HTTP/1.1" 200 16 "-" "Render/1.0"

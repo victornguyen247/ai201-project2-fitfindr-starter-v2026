@@ -1,0 +1,318 @@
+{
+  "run": 3,
+  "started_utc": "2026-11-18T21:19:53.821651Z",
+  "requests": [
+    {
+      "start_utc": "2026-11-18T21:19:53.821828Z",
+      "end_utc": "2026-11-18T21:19:58.889785Z",
+      "wall_ms": 5068,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "warmup",
+      "kind": "match",
+      "seq": 1
+    },
+    {
+      "start_utc": "2026-11-18T21:19:59.101057Z",
+      "end_utc": "2026-11-18T21:20:04.066744Z",
+      "wall_ms": 4966,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 2
+    },
+    {
+      "start_utc": "2026-11-18T21:20:04.067523Z",
+      "end_utc": "2026-11-18T21:20:09.384297Z",
+      "wall_ms": 5317,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 3
+    },
+    {
+      "start_utc": "2026-11-18T21:20:09.385064Z",
+      "end_utc": "2026-11-18T21:20:14.632750Z",
+      "wall_ms": 5248,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 4
+    },
+    {
+      "start_utc": "2026-11-18T21:20:14.633040Z",
+      "end_utc": "2026-11-18T21:20:19.937147Z",
+      "wall_ms": 5304,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 5
+    },
+    {
+      "start_utc": "2026-11-18T21:20:19.937532Z",
+      "end_utc": "2026-11-18T21:20:25.130847Z",
+      "wall_ms": 5193,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 6
+    },
+    {
+      "start_utc": "2026-11-18T21:20:25.131209Z",
+      "end_utc": "2026-11-18T21:20:30.700405Z",
+      "wall_ms": 5569,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 7
+    },
+    {
+      "start_utc": "2026-11-18T21:20:30.700543Z",
+      "end_utc": "2026-11-18T21:20:35.832809Z",
+      "wall_ms": 5132,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 8
+    },
+    {
+      "start_utc": "2026-11-18T21:20:35.833088Z",
+      "end_utc": "2026-11-18T21:20:41.046378Z",
+      "wall_ms": 5213,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 9
+    },
+    {
+      "start_utc": "2026-11-18T21:20:41.046669Z",
+      "end_utc": "2026-11-18T21:20:46.341261Z",
+      "wall_ms": 5295,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 10
+    },
+    {
+      "start_utc": "2026-11-18T21:20:46.341377Z",
+      "end_utc": "2026-11-18T21:20:51.369492Z",
+      "wall_ms": 5028,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 11
+    },
+    {
+      "start_utc": "2026-11-18T21:20:51.369695Z",
+      "end_utc": "2026-11-18T21:20:56.242125Z",
+      "wall_ms": 4872,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 12
+    },
+    {
+      "start_utc": "2026-11-18T21:20:56.242407Z",
+      "end_utc": "2026-11-18T21:20:56.528649Z",
+      "wall_ms": 286,
+      "status": 400,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}",
+      "selected": null,
+      "phase": "B",
+      "kind": "empty",
+      "seq": 13
+    },
+    {
+      "start_utc": "2026-11-18T21:20:56.528876Z",
+      "end_utc": "2026-11-18T21:21:01.433257Z",
+      "wall_ms": 4904,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 14
+    },
+    {
+      "start_utc": "2026-11-18T21:21:01.433886Z",
+      "end_utc": "2026-11-18T21:21:06.632270Z",
+      "wall_ms": 5198,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than \"designer ballgown\".",
+      "selected": null,
+      "phase": "B",
+      "kind": "nomatch",
+      "seq": 15
+    },
+    {
+      "start_utc": "2026-11-18T21:21:06.632461Z",
+      "end_utc": "2026-11-18T21:21:11.727013Z",
+      "wall_ms": 5095,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 16
+    },
+    {
+      "start_utc": "2026-11-18T21:21:11.727208Z",
+      "end_utc": "2026-11-18T21:21:16.768842Z",
+      "wall_ms": 5042,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 17
+    },
+    {
+      "start_utc": "2026-11-18T21:21:16.768952Z",
+      "end_utc": "2026-11-18T21:21:16.915012Z",
+      "wall_ms": 146,
+      "status": 400,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}",
+      "selected": null,
+      "phase": "B",
+      "kind": "empty",
+      "seq": 18
+    },
+    {
+      "start_utc": "2026-11-18T21:21:16.915187Z",
+      "end_utc": "2026-11-18T21:21:22.192121Z",
+      "wall_ms": 5277,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 19
+    },
+    {
+      "start_utc": "2026-11-18T21:21:22.192371Z",
+      "end_utc": "2026-11-18T21:21:27.234463Z",
+      "wall_ms": 5042,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than \"designer ballgown\".",
+      "selected": null,
+      "phase": "B",
+      "kind": "nomatch",
+      "seq": 20
+    },
+    {
+      "start_utc": "2026-11-18T21:21:27.234701Z",
+      "end_utc": "2026-11-18T21:21:32.662291Z",
+      "wall_ms": 5428,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats an early 2000s bootleg tee for that perfectly worn-in grunge look. Snagged this absolute gem on Depop for just $24 and I'm already obsessed. Can't wait to live in it all fall with baggy denim and heavy layers.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 21
+    }
+  ],
+  "metrics_before": {
+    "first_request_ms": 20035,
+    "latency_ms": {
+      "max": 20035,
+      "p50": 4725,
+      "p95": 5434
+    },
+    "model": {
+      "cache_hits": 70,
+      "calls": 2,
+      "tokens": 931
+    },
+    "outcomes": {
+      "found": 36,
+      "no_results": 5
+    },
+    "requests": 41,
+    "uptime_s": 1408
+  },
+  "ended_utc": "2026-11-18T21:21:32.662783Z",
+  "metrics_after": {
+    "first_request_ms": 20035,
+    "latency_ms": {
+      "max": 20035,
+      "p50": 4795,
+      "p95": 5185
+    },
+    "model": {
+      "cache_hits": 102,
+      "calls": 2,
+      "tokens": 931
+    },
+    "outcomes": {
+      "found": 52,
+      "no_results": 7
+    },
+    "requests": 59,
+    "uptime_s": 1502
+  }
+}
