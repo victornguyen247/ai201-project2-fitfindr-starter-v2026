@@ -721,12 +721,12 @@ fix, in order of how much I'd worry about them:
 
 **Out of scope**
 
-- **Moving a tool onto MCP.** `mcp_server.py` still has its tool commented out and `run_agent` calls `search_listings` directly. I am deploying the direct-call path as it exists. Finishing MCP would add a second Python process per request on a 512 MB instance and is a separate project.
+- **Changing the MCP setup.** `run_agent` already searches through MCP (`mcp_client.call_tool` starts `mcp_server.py` as a separate process for each search). I am deploying that path as it is and only timing it. I am not moving more tools onto MCP and not reverting the search to a direct call. The extra process per request matters on a 512 MB instance, which is why `serve.py` already runs one request at a time and why the start command stays plain `gunicorn serve:app`.
 - **Changing what the agent does.** No new tools, no changes to `parse_query`, search scoring, prompts or `config.TEMPERATURE`, and no fixes to quality problems found along the way. Those go in What's Still Broken, because this unit measures the system as it is.
 - **Real monitoring infrastructure.** No external uptime pinger, no Datadog or Prometheus, no database, no dashboard, and no alerting. The numbers come from stdout logs and an in-memory `/metrics` route that resets on every restart or sleep.
 - **A user interface, auth or rate limiting.** It stays an API with `POST /ask` and `GET /health`, and I am not adding a front end, accounts, or a way to keep strangers from spending my Gemini quota beyond what `generate.py` already does.
 
-**Size check.** Estimated build time is about 80 minutes: per-step timing and the JSON log line in `serve.py` (~30 min), the `/metrics` route with in-memory counters and percentiles (~20 min), Render setup with a start command, environment variable and health check path (~15 min), and a first deploy plus a smoke test (~15 min). That is under the ninety-minute ceiling. Per-step timing is done in `serve.py` by wrapping the three tool functions that `agent.py` imports, so `agent.py` itself is not edited. If that wrapping turns out to be fiddly, I will time the whole `run_agent` call instead and drop the per-step numbers.
+**Size check.** Estimated build time is about 80 minutes: per-step timing and the JSON log line in `serve.py` (~30 min), the `/metrics` route with in-memory counters and percentiles (~20 min), Render setup with a start command, environment variable and health check path (~15 min), and a first deploy plus a smoke test (~15 min). That is under the ninety-minute ceiling. Per-step timing is done in `serve.py` by wrapping `agent.call_tool` (the MCP search) and `agent.suggest_outfit` and `agent.create_fit_card`, so `agent.py` itself is not edited. If that wrapping turns out to be fiddly, I will time the whole `run_agent` call instead and drop the per-step numbers.
 
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
