@@ -713,6 +713,10 @@ fix, in order of how much I'd worry about them:
 
 ---
 
+## Capstone
+
+Everything below this heading is the deploy-and-instrument capstone. The sections above it belong to the earlier project and are unchanged.
+
 ## The Shape
 
 <!-- Unit 9, Milestone 1. Shape A: Deploy and instrument. -->
@@ -923,13 +927,105 @@ The fair comparison for criterion 4 is the runs where the service stayed up for 
 
 One thing did not work as intended. The boot record appeared in the log for the 22:38 restart but I could not find one for the wake at 23:03:40, even though the gunicorn lines around it are in the export. I don't know whether the line was dropped by Render's log stream (another record of mine went missing from an earlier export the same way) or never written. So the log can make a restart visible, but I can't yet say it always will.
 
-## Unit 9 — What's Still Broken
+## Instrumentation
 
-- **Render restarts the instance mid-use (criteria 1, 5, and the 502s in 2 and 4).** I don't know why, so I can't fix it from the code. Things I would try, in order: ask whether a paid plan restarts less, add a client retry on 502 with a short wait, and capture the instance's memory and event history at the moment of a restart. I stopped here because the cause isn't visible from inside the app, and the unit's time went to the testing.
-- **A 502 leaves no record on the server.** Requests that arrive while the instance is down never reach `serve.py`, so criterion 4 can't be met for them from inside the app. Only a client-side or proxy-side log can see them, and I only have the client-side one in `run_live_test.py`.
-- **Missing log lines.** One 24-second request in the before-run 2 has no record in the export although the lines around it are there, and one boot line is missing. The app prints with a flush, so I suspect Render's log stream drops lines, but I haven't shown it.
-- **A model error is logged as an outcome.** `outcome: model_unavailable` carries the text of the failure now, but the record doesn't say whether it was a 503 or a bad key, only the message.
-- **Cold start is a single trial** in the before-set and one in the after-set (41.1 s and 46.4 s). Both are inside 90 s, but two trials is not a distribution.
+**What gets logged.** Every `POST /ask` writes one JSON line to stdout, which Render's Logs tab collects. I read the records back by setting the time range in that tab and downloading the lines; the exports are in `results/render_log_*.jsonl`. It is stdout and not a file on the server because Render's free tier wipes the filesystem on every restart or sleep. The fields:
 
+| Field | What it holds |
+|---|---|
+| `ts` | UTC time the request finished |
+| `query` | the input text (empty string for a rejected request) |
+| `outcome` | `found`, `no_results`, `model_unavailable`, `server_error` or `rejected_input` |
+| `error_type` | `missing_query`, `ModelUnavailable`, an exception class name, or null |
+| `output` | the fit card, or the message the user got when there was no card |
+| `total_ms` | time inside `run_agent` |
+| `steps_ms` | milliseconds per step: `search` (the MCP call), `outfit`, `fit_card` |
+| `model_calls`, `cache_hits`, `tokens` | what this one request used, from the counters in `generate.py` |
+
+A `{"event": "boot"}` line is written when the app starts, so a restart shows up as a new boot line.
+
+**Ten entries** (the criterion 4 mix from after-run 3, 6 matching, 2 no-match and 2 empty requests, in the order they ran; `output` is cut to 110 characters here and complete in the log):
+
+```
+{"event": "ask", "ts": "2026-11-18T22:40:19Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Already living in this 2003 tour bootleg tee. Snagged it on depop for $24 and it adds the exact amount of f...", "total_ms": 5758, "steps_ms": {"search": 4021, "outfit": 1118, "fit_card": 618}, "model_calls": 2, "cache_hits": 0, "tokens": 853}
+{"event": "ask", "ts": "2026-11-18T22:40:19Z", "query": "", "outcome": "rejected_input", "error_type": "missing_query", "output": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}", "total_ms": 0, "steps_ms": {}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+{"event": "ask", "ts": "2026-11-18T22:40:26Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Channeling heavy 2003 garage-show energy with this oversized bootleg tour tee. Snagged it on Depop for $24 ...", "total_ms": 6356, "steps_ms": {"search": 4128, "outfit": 1324, "fit_card": 904}, "model_calls": 2, "cache_hits": 0, "tokens": 886}
+{"event": "ask", "ts": "2026-11-18T22:40:30Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "output": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or ...", "total_ms": 4408, "steps_ms": {"search": 4408}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+{"event": "ask", "ts": "2026-11-18T22:40:36Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Unlocking the ultimate grunge-streetwear vibe with this oversized 2003 tour bootleg tee. Snagged it on Depo...", "total_ms": 5714, "steps_ms": {"search": 3913, "outfit": 1136, "fit_card": 664}, "model_calls": 2, "cache_hits": 0, "tokens": 885}
+{"event": "ask", "ts": "2026-11-18T22:40:42Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Nothing beats the perfect faded wash on a Y2K graphic tee, especially when you find it on Depop for just $2...", "total_ms": 5894, "steps_ms": {"search": 4023, "outfit": 1061, "fit_card": 810}, "model_calls": 2, "cache_hits": 0, "tokens": 859}
+{"event": "ask", "ts": "2026-11-18T22:40:43Z", "query": "", "outcome": "rejected_input", "error_type": "missing_query", "output": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}", "total_ms": 0, "steps_ms": {}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+{"event": "ask", "ts": "2026-11-18T22:40:49Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Channeling peak 90s rock-show energy with this 2003 tour bootleg tee. Snagged it on Depop for just $24 and ...", "total_ms": 5974, "steps_ms": {"search": 3747, "outfit": 1423, "fit_card": 803}, "model_calls": 2, "cache_hits": 0, "tokens": 867}
+{"event": "ask", "ts": "2026-11-18T22:40:54Z", "query": "designer ballgown size XXS under $5", "outcome": "no_results", "error_type": null, "output": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or ...", "total_ms": 4390, "steps_ms": {"search": 4390}, "model_calls": 0, "cache_hits": 0, "tokens": 0}
+{"event": "ask", "ts": "2026-11-18T22:41:05Z", "query": "vintage graphic tee under $30", "outcome": "found", "error_type": null, "output": "Nothing beats leaning into that early-2000s grunge aesthetic. Just grabbed this vintage tour tee on Depop f...", "total_ms": 10776, "steps_ms": {"search": 3758, "outfit": 2611, "fit_card": 4406}, "model_calls": 2, "cache_hits": 0, "tokens": 809}
+```
+
+**Failed runs.** Entries 2 and 7 above are rejected inputs: an empty request returns HTTP 400 and now leaves a record with `error_type: missing_query`. Before the fix it left none. A failure from the model looks like this, from before-run 1 (the first model call got a 503 from Gemini; this is the older record shape, with no `output` or error text):
+
+```
+{"event": "ask", "ts": "2026-11-18T21:42:28Z", "query": "vintage graphic tee under $30", "outcome": "model_unavailable", "error_type": null, "total_ms": 4271, "steps_ms": {"search": 4139, "outfit": 131}, "model_calls": 1, "cache_hits": 0, "tokens": 0}
+```
+
+One kind of failure still leaves no entry: when Render restarts the instance, requests during the downtime get a 502 from Render's proxy and never reach the app. I only know about those from my own test client (`results/live_*.json`). The restart shows up only as a gap and, when the line survives, a boot record.
+
+## What It Costs
+
+**The measurement.** Ten matching requests, `vintage graphic tee under $30`, sent one at a time to the live service with the cache off (`AI201_CACHE=0`, so every run made real model calls). That is phase A of after-run 3, 2026-11-18 22:38 to 22:41 UTC. The numbers come from each request's own log record: `tokens` is the difference in `generate.token_counts()["total"]` before and after the run, and `total_ms` is the time inside `run_agent`.
+
+| Run | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Mean |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Tokens | 859 | 866 | 842 | 843 | 848 | 833 | 848 | 837 | 842 | 880 | **849.8** |
+| `total_ms` | 18,823 | 5,921 | 5,504 | 6,043 | 6,319 | 5,681 | 5,548 | 21,940 | 6,837 | 5,846 | **8,846** |
+
+Every one of the ten made exactly 2 model calls. Runs 1 and 8 are slow outliers (the first came right after a restart), so the median time is 5,982 ms (about 6.0 s) while the mean is 8.8 s. As a cross-check, the 20 clean matching runs of after-runs 3 and 4 average 850.05 tokens and 8,341 ms.
+
+**Cost of one run.** About **850 tokens and 8.8 seconds of compute**, with two model calls. The log only keeps the total, not the split between input and output tokens, so I price it as a range. With Gemini 3.5 Flash-Lite at $0.30 per million input tokens and $2.50 per million output tokens (from third-party price pages, not checked against Google's own page):
+
+- All tokens at the input price: 849.8 × $0.30 / 1,000,000 = **$0.000255** per run
+- All tokens at the output price: 849.8 × $2.50 / 1,000,000 = **$0.002125** per run
+
+The real cost is somewhere between those. During my testing it was $0, because I was on the free tier.
+
+**For a hundred people a day.** I assume each person runs 5 searches a day, so 100 × 5 = 500 runs a day.
+
+- Model: 500 × $0.000255 = $0.13 a day and 500 × $0.002125 = $1.06 a day, so about **$3.82 to $31.87 for a 30-day month**.
+- Hosting: the free instance sleeps and restarts, so I would pay for a $7 a month Starter instance (also a third-party figure).
+- Compute: 500 × 8.846 s = 4,423 s, about 74 minutes a day, so one worker doing one request at a time is busy about 5% of the day.
+
+That makes **about $11 to $39 a month in total** ($7 + $3.82, and $7 + $31.87), and the Gemini free tier's per-minute limit of 15 requests (two per run) is not a problem at 500 runs a day spread out.
+
+## What's Still Broken
+
+Criteria 1, 4 and 5 are still MISSED in the after-set. Criteria 2 and 3 were MET.
+
+- **Criterion 1 (warm query completes 5 of 5), still missed: 5, 0, 5, 5.** What I'd do: find out whether the restarts are a free-tier behavior. I would run the same three trials on a paid instance, and add a client-side retry with a short wait on a 502. I stopped because the cause isn't visible from inside the app (the Events tab showed nothing and the log shows only Render's SIGTERM), and each experiment needs a deploy plus a log export, which is where the time of this unit went.
+- **Criterion 4 (complete record for every request), still missed: 0, 0, 10, 10.** The part that was my code is fixed. What is left is structural: a request that Render answers with a 502 never reaches my app, so my app can't log it. What I'd do is keep a client-side log (what `run_live_test.py` already does) or put a logging layer in front of the service. I stopped because that is a different system from the one I scoped. I'd also look into why one record and one boot line were missing from the exports.
+- **Criterion 5 (cost counters real), still missed: 10, 0, 10, 10.** The counters are correct in every record that exists. It missed because run 2 happened entirely during a restart, so the fix is the same as for criterion 1.
+- **Targets set too low (criteria 2 and 3, both met).** The latency target was loose: I set a median of 15,000 ms and a maximum of 60,000 ms, and the worst median I saw was 8,563 ms and the worst maximum 21,940 ms. I'd tighten it to a median of 10,000 ms and a maximum of 30,000 ms. The wake-up target of 90 s was also loose against 41 to 46 s measured, and I'd tighten it to 60 s. Each was measured once or twice, so I'd also run the cold start more than once before trusting 60 s.
+
+**What I'd do next.** The first thing is to move the service to a paid instance for a day and rerun the same three trials, because that tells me whether the 502s come from the free tier or from my app, and every miss that is left depends on that answer. Until I know that, any further work on logging or retries is aimed at a cause I haven't identified.
+
+## How I Used AI
+
+*(This is for the deploy-and-instrument capstone. The earlier project's section is above and unchanged.)*
+
+**Moment 1: Scope against the real code.**
+- *What I asked for:* to build the deploy-and-instrument extension I had scoped, with a README paragraph saying the MCP move was out of scope and that I'd deploy the direct-call path.
+- *What came back:* before writing anything, Claude read `agent.py` and found that `run_agent` already searched through MCP (`mcp_client.call_tool`), so my scope bullet was wrong. It asked me whether to deploy that as it was or revert it.
+- *What I changed:* I chose to deploy as-is and only time it. Claude corrected the out-of-scope bullet (commit `7bfe738`) and timed the MCP step by wrapping `agent.call_tool` in `serve.py` instead of editing `agent.py`.
+
+**Moment 2: The cache I thought was off.**
+- *What I asked for:* a live test of five criteria against the deployed service, with the cache off so each run made real model calls.
+- *What came back:* the first service's `/metrics` showed 2 model calls and 102 cache hits after 59 requests, and matching runs took the same 5 seconds as the no-match query. Claude traced it to my deploy: I had created the service by hand, so `render.yaml` and its `AI201_CACHE=0` were never applied.
+- *What I changed:* I deleted that service and recreated it as a Blueprint, kept the old results as `results/old_service_run1-3.json` to show the difference, and reran everything.
+
+**Moment 3: A wrong diagnosis, withdrawn.**
+- *What I asked for:* why runs 3 and 4 returned 502.
+- *What came back:* Claude first guessed the 512 MB memory limit, because each request starts a second Python process for the MCP search. When I exported the logs, they showed a graceful `Handling signal: term` followed by `Instance ... restarted`, which is not what an out-of-memory kill looks like.
+- *What I changed:* I dropped the memory explanation and wrote in the README that the cause of the restarts is unknown. I did not claim a mechanism I couldn't show.
+
+**Moment 4: Following my own instructions.**
+- *What I asked for:* a fresh clone of my repo, following `RUNNING.md` alone.
+- *What came back:* it failed twice: plain `python` on my machine is 3.14.0, which the pinned packages don't support, and `.env.example` holds a placeholder key. Neither was in my instructions.
+- *What I changed:* I added both to `RUNNING.md`, then rebuilt the environment with a 3.13 interpreter and confirmed `test.py` passes 10 of 10 and `serve.py` answers a request.
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**

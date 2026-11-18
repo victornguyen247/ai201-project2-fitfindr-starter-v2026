@@ -246,3 +246,91 @@ history is what shows your criteria existed before your results did.
 units.
 
 `results/` is deliberately **not** in `.gitignore`.
+
+---
+
+## Deployed on Render — my unit 9 setup
+
+**Live URL:** https://fitfindr-qzrp.onrender.com
+
+It runs on Render's free web service. The free tier sleeps after 15 minutes
+without a request, so the first request after that takes 40 to 50 seconds
+(measured: 41.1 s and 46.4 s). Render also restarted my instance mid-test
+three times; requests that arrive during a restart get a 502 page.
+
+### How it got there
+
+`render.yaml` in this repo describes the service. **It only takes effect if you
+create the service as a Blueprint** — creating a "Web Service" by hand ignores
+the file, and then `AI201_CACHE` is never set and every answer comes from the
+cache (I made that mistake once; it is in the README).
+
+1. Push this repo to GitHub.
+2. In the Render dashboard choose **New → Blueprint**, pick the repo, and apply.
+3. When it asks for `GEMINI_API_KEY`, paste your key. That one is not in the file
+   on purpose (`sync: false`).
+4. Wait for the deploy to say **live**. A deploy takes about a minute.
+
+What the service needs, all set by `render.yaml` except the key:
+
+| Setting | Value |
+|---|---|
+| Build command | `pip install -r requirements.txt` |
+| Start command | `gunicorn serve:app --timeout 120` (default sync worker; an async worker breaks the MCP call) |
+| Health check path | `/health` |
+| `PYTHON_VERSION` | `3.12.7` |
+| `GEMINI_API_KEY` | your key (paste in the dashboard) |
+| `AI201_CACHE` | `0` (so every run makes real model calls) |
+
+### Test the live service
+
+PowerShell (single quotes, so `$30` is not treated as a variable):
+
+```powershell
+Invoke-RestMethod https://fitfindr-qzrp.onrender.com/health
+Invoke-RestMethod -Method Post -Uri https://fitfindr-qzrp.onrender.com/ask -ContentType 'application/json' -Body '{"query": "vintage graphic tee under $30"}'
+```
+
+zsh / bash:
+
+```bash
+curl https://fitfindr-qzrp.onrender.com/health
+curl -X POST https://fitfindr-qzrp.onrender.com/ask -H 'Content-Type: application/json' -d '{"query": "vintage graphic tee under $30"}'
+```
+
+A good answer is HTTP 200 with a non-empty `fit_card` and `error` null. A query
+that matches nothing (`designer ballgown size XXS under $5`) is also HTTP 200,
+with `error` filled in and `fit_card` null. An empty body (`{}`) is HTTP 400.
+
+### Where the numbers are
+
+- **Logs:** every `/ask` writes one JSON line to stdout with `"event": "ask"`
+  (fields: `ts`, `query`, `outcome`, `error_type`, `output`, `total_ms`,
+  `steps_ms`, `model_calls`, `cache_hits`, `tokens`). A startup writes
+  `"event": "boot"`. Read them in the service's **Logs** tab in the dashboard;
+  set the time range, scroll to the top so everything loads, then download.
+- **`GET /metrics`:** request counts by outcome, p50/p95/max latency, the first
+  request's time, and model call and token totals since the process started.
+  It resets on every restart or sleep.
+
+### Run the same thing on your own machine
+
+**Python 3.11, 3.12 or 3.13 only.** Not 3.14. Check with `python --version`
+before you make the virtual environment. On my machine plain `python` was 3.14.0,
+and a fresh clone failed `test.py` with `Found 3.14.0. The pinned packages do not
+support 3.14 yet`. I rebuilt the environment with a 3.13 interpreter
+(`<path to a 3.13 python>\python.exe -m venv .venv`) and it passed. Also,
+`.env.example` holds a placeholder: until you paste a real key into `.env`,
+`test.py` reports `[FAIL] API key` and skips the model call.
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+copy .env.example .env         # then paste your key into .env
+python test.py                 # must print 10 passed
+python serve.py                # listens on http://localhost:5000
+```
+
+Then use the same two requests as above with `http://localhost:5000`. Stop it
+with Ctrl-C. Locally the answers are cached unless you set `AI201_CACHE=0`.
