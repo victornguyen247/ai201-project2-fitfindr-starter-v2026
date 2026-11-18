@@ -248,6 +248,7 @@ Found my new holy grail pair of vintage Levi's 501 jeans on Depop for just $38. 
 - *What I asked for:* I asked Claude to score the before-run against my criteria and to make one fix for the miss my diagnosis named.
 - *What came back:* It scored every fit card with a script and found a problem my table had hidden: 3 of 20 cards wrote the price as "forty bucks", and all 20 opened with "Scored this" or "Found the". It then rewrote the `create_fit_card` prompt to require `$N` and ban those openers.
 - *What I changed:* The after-run was measured instead of assumed fixed, and I reviewed the numbers before moving on: the price problem went from 3 cards to 0, but the banned phrase was replaced by "Snagged ..." in 14 of 20 cards. I recorded that as a partial fix in the README and kept it as the top item in What's Still Broken.
+---
 
 <!-- ═══════════════════════ UNIT 4 — THE TEST ═══════════════════════
 
@@ -711,5 +712,21 @@ fix, in order of how much I'd worry about them:
      ═════════════════════════════════════════════════════════════════════ -->
 
 ---
+
+## The Shape
+
+<!-- Unit 9, Milestone 1. Shape A: Deploy and instrument. -->
+
+**Shape A — Deploy and instrument.** FitFindr has only ever run from my laptop's command line, so I am adding the operational layer that lets it run on its own on Render's free web service (`gunicorn serve:app`, with `GEMINI_API_KEY` set as a Render environment variable instead of a `.env` file). In `serve.py` I will add one structured JSON log line per `/ask` request, written to stdout where Render's log viewer picks it up. It records the outcome (found, no results, model unavailable, or server error), total latency in milliseconds, time spent in each step (`search_listings`, `suggest_outfit`, `create_fit_card`), and the model calls, cache hits and tokens that request used, read from the counters `generate.py` already keeps. A small `GET /metrics` route will report request counts by outcome and p50/p95 latency since the process started, and I will time the first request after the free tier's idle sleep so the cold start becomes a measured number. The agent's behavior stays exactly what it is now; the extension is the run path, the instrumentation, and the numbers that come out of it.
+
+**Out of scope**
+
+- **Moving a tool onto MCP.** `mcp_server.py` still has its tool commented out and `run_agent` calls `search_listings` directly. I am deploying the direct-call path as it exists. Finishing MCP would add a second Python process per request on a 512 MB instance and is a separate project.
+- **Changing what the agent does.** No new tools, no changes to `parse_query`, search scoring, prompts or `config.TEMPERATURE`, and no fixes to quality problems found along the way. Those go in What's Still Broken, because this unit measures the system as it is.
+- **Real monitoring infrastructure.** No external uptime pinger, no Datadog or Prometheus, no database, no dashboard, and no alerting. The numbers come from stdout logs and an in-memory `/metrics` route that resets on every restart or sleep.
+- **A user interface, auth or rate limiting.** It stays an API with `POST /ask` and `GET /health`, and I am not adding a front end, accounts, or a way to keep strangers from spending my Gemini quota beyond what `generate.py` already does.
+
+**Size check.** Estimated build time is about 80 minutes: per-step timing and the JSON log line in `serve.py` (~30 min), the `/metrics` route with in-memory counters and percentiles (~20 min), Render setup with a start command, environment variable and health check path (~15 min), and a first deploy plus a smoke test (~15 min). That is under the ninety-minute ceiling. Per-step timing is done in `serve.py` by wrapping the three tool functions that `agent.py` imports, so `agent.py` itself is not edited. If that wrapping turns out to be fiddly, I will time the whole `run_agent` call instead and drop the per-step numbers.
+
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
