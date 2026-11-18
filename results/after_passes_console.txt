@@ -1,0 +1,75 @@
+Pass 1: warm-up
+   1 warmup  match   status=200  18932 ms  card=True
+phase A: 10 matching requests
+   2 A       match   status=200   6855 ms  card=True
+   3 A       match   status=200   6387 ms  card=True
+   4 A       match   status=200   6713 ms  card=True
+   5 A       match   status=200   6473 ms  card=True
+   6 A       match   status=200   6538 ms  card=True
+   7 A       match   status=200   7689 ms  card=True
+   8 A       match   status=200  18053 ms  card=True
+   9 A       match   status=200   6785 ms  card=True
+  10 A       match   status=200   6432 ms  card=True
+  11 A       match   status=200   6873 ms  card=True
+phase B: the criterion 4 mix
+  12 B       match   status=502    323 ms  card=False
+  13 B       empty   status=502    301 ms  card=False
+  14 B       match   status=502    417 ms  card=False
+  15 B       nomatch status=502    321 ms  card=False
+  16 B       match   status=502    291 ms  card=False
+  17 B       match   status=502    282 ms  card=False
+  18 B       empty   status=502    128 ms  card=False
+  19 B       match   status=502    151 ms  card=False
+  20 B       nomatch status=502    152 ms  card=False
+  21 B       match   status=502    412 ms  card=False
+saved results\live_after_run1.json
+Pass 2: warm-up
+   1 warmup  match   status=502    181 ms  card=False
+phase A: 10 matching requests
+   2 A       match   status=502    512 ms  card=False
+   3 A       match   status=502    546 ms  card=False
+   4 A       match   status=502    478 ms  card=False
+   5 A       match   status=502    715 ms  card=False
+   6 A       match   status=502    644 ms  card=False
+   7 A       match   status=502    643 ms  card=False
+   8 A       match   status=502    452 ms  card=False
+   9 A       match   status=502    766 ms  card=False
+  10 A       match   status=502    782 ms  card=False
+  11 A       match   status=502    560 ms  card=False
+phase B: the criterion 4 mix
+  12 B       match   status=502    512 ms  card=False
+  13 B       empty   status=502    256 ms  card=False
+  14 B       match   status=502    529 ms  card=False
+  15 B       nomatch status=502    543 ms  card=False
+  16 B       match   status=502    404 ms  card=False
+  17 B       match   status=502    484 ms  card=False
+  18 B       empty   status=502    247 ms  card=False
+  19 B       match   status=502    515 ms  card=False
+  20 B       nomatch status=502    431 ms  card=False
+  21 B       match   status=502    290 ms  card=False
+saved results\live_after_run2.json
+Pass 3: warm-up
+   1 warmup  match   status=502    310 ms  card=False
+phase A: 10 matching requests
+   2 A       match   status=200  18996 ms  card=True
+   3 A       match   status=200   6234 ms  card=True
+   4 A       match   status=200   5656 ms  card=True
+   5 A       match   status=200   6354 ms  card=True
+   6 A       match   status=200   6480 ms  card=True
+   7 A       match   status=200   5846 ms  card=True
+   8 A       match   status=200   5720 ms  card=True
+   9 A       match   status=200  22198 ms  card=True
+  10 A       match   status=200   7142 ms  card=True
+  11 A       match   status=200   6123 ms  card=True
+phase B: the criterion 4 mix
+  12 B       match   status=200   6027 ms  card=True
+  13 B       empty   status=400    143 ms  card=False
+  14 B       match   status=200   6766 ms  card=True
+  15 B       nomatch status=200   4675 ms  card=False
+  16 B       match   status=200   5874 ms  card=True
+  17 B       match   status=200   6224 ms  card=True
+  18 B       empty   status=400    275 ms  card=False
+  19 B       match   status=200   6133 ms  card=True
+  20 B       nomatch status=200   4742 ms  card=False
+  21 B       match   status=200  10933 ms  card=True
+saved results\live_after_run3.json

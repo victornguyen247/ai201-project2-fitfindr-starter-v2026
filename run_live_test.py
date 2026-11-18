@@ -93,7 +93,7 @@ def get_metrics() -> dict | None:
         return None
 
 
-def run_pass(n: int) -> None:
+def run_pass(n: int, label: str = "") -> None:
     out = {"run": n, "started_utc": now(), "requests": []}
 
     def go(phase: str, kind: str) -> None:
@@ -116,12 +116,12 @@ def run_pass(n: int) -> None:
     out["ended_utc"] = now()
     out["metrics_after"] = get_metrics()
 
-    path = Path("results") / f"live_run{n}.json"
+    path = Path("results") / f"live_{label}run{n}.json"
     path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"saved {path}")
 
 
-def run_cold() -> None:
+def run_cold(label: str = "") -> None:
     """One request, timed by this client. Run it >= 20 minutes after the last."""
     print("cold-start trial (service should have been idle for 20+ minutes)")
     kind, body = request_for("match")
@@ -129,7 +129,7 @@ def run_cold() -> None:
     r.update(phase="cold", kind=kind)
     print(f"  status={r['status']} {r['wall_ms']} ms card={bool(r['fit_card'])} "
           f"failure={r['client_failure']}")
-    Path("results/live_cold.json").write_text(
+    Path(f"results/live_{label}cold.json").write_text(
         json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
@@ -137,10 +137,11 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", type=int)
     ap.add_argument("--cold", action="store_true")
+    ap.add_argument("--label", default="", help="prefix for result files, e.g. after_")
     a = ap.parse_args()
     if a.cold:
-        run_cold()
+        run_cold(a.label)
     elif a.run:
-        run_pass(a.run)
+        run_pass(a.run, a.label)
     else:
         ap.error("give --run N or --cold")

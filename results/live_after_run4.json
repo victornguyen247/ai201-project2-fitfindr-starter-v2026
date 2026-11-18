@@ -1,0 +1,318 @@
+{
+  "run": 4,
+  "started_utc": "2026-11-18T23:04:07.580744Z",
+  "requests": [
+    {
+      "start_utc": "2026-11-18T23:04:07.580943Z",
+      "end_utc": "2026-11-18T23:04:15.845500Z",
+      "wall_ms": 8265,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats the effortless grunge energy of a 2003 tour bootleg style tee. Snagged this exact one on depop for $24 and I'm already rotating it between baggy denim and wide-leg trousers. Such an easy win for everyday outfits.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "warmup",
+      "kind": "match",
+      "seq": 1
+    },
+    {
+      "start_utc": "2026-11-18T23:04:16.029421Z",
+      "end_utc": "2026-11-18T23:04:23.797714Z",
+      "wall_ms": 7768,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Unapologetic 2003 garage-band energy coming right up. Scoring this bootleg tour tee for $24 on Depop felt entirely illegal. Can't wait to live in it with baggy denim and combat boots all fall.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 2
+    },
+    {
+      "start_utc": "2026-11-18T23:04:23.798174Z",
+      "end_utc": "2026-11-18T23:04:29.990479Z",
+      "wall_ms": 6192,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling peak 2000s rocker energy in this oversized bootleg tour tee. Snagged it on depop for $24 and honestly haven't taken it off since. Going to live in this with baggy denim and heavy combat boots all fall.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 3
+    },
+    {
+      "start_utc": "2026-11-18T23:04:29.990929Z",
+      "end_utc": "2026-11-18T23:04:38.110684Z",
+      "wall_ms": 8120,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats that perfectly faded, heavy-cotton grunge look. Just grabbed this 2003 tour bootleg tee on Depop for $24, and honestly, it’s about to live in heavy rotation with baggy denim and combat boots.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 4
+    },
+    {
+      "start_utc": "2026-11-18T23:04:38.111197Z",
+      "end_utc": "2026-11-18T23:04:45.298489Z",
+      "wall_ms": 7187,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Chasing that effortless 90s grunge look all autumn. This vintage 2003 tour bootleg tee from Depop was a steal at $24 and has already earned a permanent spot in my rotation. Throwing it on with baggy denim or layering it over a tank makes getting dressed way too easy.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 5
+    },
+    {
+      "start_utc": "2026-11-18T23:04:45.298964Z",
+      "end_utc": "2026-11-18T23:04:53.377481Z",
+      "wall_ms": 8078,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Wide-leg khakis and chunky sneakers are the exact vibe for this 2003 tour tee. Total bootleg energy that brings the best kind of grungy edge to whatever's already in the closet. Honestly can't believe it was only $24 on Depop.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 6
+    },
+    {
+      "start_utc": "2026-11-18T23:04:53.378052Z",
+      "end_utc": "2026-11-18T23:05:07.761738Z",
+      "wall_ms": 14384,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "The ultimate 2003 bootleg tour tee just unlocked my entire grunge era. Snagged it on Depop for $24 and I'm already rotating it between baggy denim and khaki trousers. Absolute steal for the rotation.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 7
+    },
+    {
+      "start_utc": "2026-11-18T23:05:07.762020Z",
+      "end_utc": "2026-11-18T23:05:15.242087Z",
+      "wall_ms": 7480,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling peak early 2000s angst with this tour bootleg tee. Snagged it on depop for $24 and I'm already rotating it between baggy denim and slouchy khakis. Total grunge streetwear perfection.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 8
+    },
+    {
+      "start_utc": "2026-11-18T23:05:15.242775Z",
+      "end_utc": "2026-11-18T23:05:22.586451Z",
+      "wall_ms": 7344,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats the instant grunge cred of a 2003 tour bootleg tee. Snagged this beauty on depop for $24 and it's already getting paired with baggy denim and combat boots all week.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 9
+    },
+    {
+      "start_utc": "2026-11-18T23:05:22.586905Z",
+      "end_utc": "2026-11-18T23:05:30.399952Z",
+      "wall_ms": 7813,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats that broken-in 2003 tour bootleg look for $24 on depop. I'm living in this tee styled with baggy denim and combat boots all fall. Total effortless grunge energy.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 10
+    },
+    {
+      "start_utc": "2026-11-18T23:05:30.411356Z",
+      "end_utc": "2026-11-18T23:05:37.204891Z",
+      "wall_ms": 6793,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling peak 2003 garage-band energy with this bootleg tour tee. Snagged it on Depop for $24 and honestly haven't taken it off since. Looks unreal tucked into wide-leg trousers with heavy combat boots.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "A",
+      "kind": "match",
+      "seq": 11
+    },
+    {
+      "start_utc": "2026-11-18T23:05:37.205086Z",
+      "end_utc": "2026-11-18T23:05:44.670771Z",
+      "wall_ms": 7466,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Nothing beats the grungy energy of a 2003 tour bootleg style. I just grabbed this graphic tee on Depop for $24 and I'm already rotating it between baggy denim and crisp trousers. Honestly one of my best scores all season.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 12
+    },
+    {
+      "start_utc": "2026-11-18T23:05:44.671117Z",
+      "end_utc": "2026-11-18T23:05:44.983128Z",
+      "wall_ms": 312,
+      "status": 400,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}",
+      "selected": null,
+      "phase": "B",
+      "kind": "empty",
+      "seq": 13
+    },
+    {
+      "start_utc": "2026-11-18T23:05:44.983460Z",
+      "end_utc": "2026-11-18T23:05:52.604143Z",
+      "wall_ms": 7621,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling peak 2000s garage rock energy with this faded bootleg tour tee. Snagged it on depop for $24 and it's already the hardest-working piece in my rotation. Pairs just as well with baggy denim and combat boots as it does with crisp khakis.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 14
+    },
+    {
+      "start_utc": "2026-11-18T23:05:52.604259Z",
+      "end_utc": "2026-11-18T23:05:57.596372Z",
+      "wall_ms": 4992,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than \"designer ballgown\".",
+      "selected": null,
+      "phase": "B",
+      "kind": "nomatch",
+      "seq": 15
+    },
+    {
+      "start_utc": "2026-11-18T23:05:57.596838Z",
+      "end_utc": "2026-11-18T23:06:05.813805Z",
+      "wall_ms": 8217,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Accidental 2003 tour bootleg energy is my entire personality now. Snagged this absolute gem on Depop for $24 and I'm already rotating it between baggy denim and slouchy trousers. Early 2000s grunge is officially back and I'm not leaving the house without it.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 16
+    },
+    {
+      "start_utc": "2026-11-18T23:06:05.814060Z",
+      "end_utc": "2026-11-18T23:06:14.304347Z",
+      "wall_ms": 8490,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling peak 2003 garage-rock energy with this vintage bootleg tee. Snagged it on Depop for just $24 and honestly haven't taken it off since. It's giving major effortless grunge whether I'm tossing it on with baggy denim or layering it over a tank with combat boots.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 17
+    },
+    {
+      "start_utc": "2026-11-18T23:06:14.304666Z",
+      "end_utc": "2026-11-18T23:06:14.692889Z",
+      "wall_ms": 388,
+      "status": 400,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Send JSON with a 'query' field, e.g. {\"query\": \"vintage graphic tee under $30\"}",
+      "selected": null,
+      "phase": "B",
+      "kind": "empty",
+      "seq": 18
+    },
+    {
+      "start_utc": "2026-11-18T23:06:14.693362Z",
+      "end_utc": "2026-11-18T23:06:22.648679Z",
+      "wall_ms": 7955,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "The ultimate 2003 tour bootleg energy for the rotation. Snagged this graphic tee on Depop for $24 and I'm already obsessed. Styling it baggy with dark denim and combat boots all week long.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 19
+    },
+    {
+      "start_utc": "2026-11-18T23:06:22.648962Z",
+      "end_utc": "2026-11-18T23:06:27.363619Z",
+      "wall_ms": 4715,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": null,
+      "error": "Nothing matched your search. You could raise the price limit above $5, drop the size filter (size XXS), or try fewer or different keywords than \"designer ballgown\".",
+      "selected": null,
+      "phase": "B",
+      "kind": "nomatch",
+      "seq": 20
+    },
+    {
+      "start_utc": "2026-11-18T23:06:27.364437Z",
+      "end_utc": "2026-11-18T23:06:34.877635Z",
+      "wall_ms": 7513,
+      "status": 200,
+      "client_failure": null,
+      "fit_card": "Channeling all the best early-2000s grunge energy with this bootleg tour tee. Snagged it on Depop for just $24 and I'm already living in it. Going to layer it half-zipped with my cropped hoodie and combat boots for tonight.",
+      "error": null,
+      "selected": "lst_006",
+      "phase": "B",
+      "kind": "match",
+      "seq": 21
+    }
+  ],
+  "metrics_before": {
+    "first_request_ms": 24016,
+    "latency_ms": {
+      "max": 24016,
+      "p50": 7842,
+      "p95": 24016
+    },
+    "model": {
+      "cache_hits": 0,
+      "calls": 4,
+      "tokens": 1725
+    },
+    "outcomes": {
+      "found": 2
+    },
+    "requests": 2,
+    "uptime_s": 36
+  },
+  "ended_utc": "2026-11-18T23:06:34.878149Z",
+  "metrics_after": {
+    "first_request_ms": 24016,
+    "latency_ms": {
+      "max": 24016,
+      "p50": 7316,
+      "p95": 14101
+    },
+    "model": {
+      "cache_hits": 0,
+      "calls": 36,
+      "tokens": 15478
+    },
+    "outcomes": {
+      "found": 18,
+      "no_results": 2,
+      "rejected_input": 2
+    },
+    "requests": 20,
+    "uptime_s": 175
+  }
+}

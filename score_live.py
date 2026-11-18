@@ -41,10 +41,10 @@ def match(req, recs):
     _used.add(best[1])
     return recs[best[1]]
 
-QUERY = {"match": "vintage graphic tee under $30", "nomatch": "designer ballgown size XXS under $5"}
+QUERY = {"match": "vintage graphic tee under $30", "nomatch": "designer ballgown size XXS under $5", "empty": ""}
 
-def score(n, recs):
-    d = json.load(open(f"results/live_run{n}.json"))
+def score(n, recs, prefix=""):
+    d = json.load(open(f"results/live_{prefix}run{n}.json"))
     reqs = d["requests"]
     for r in reqs: r["query"] = QUERY.get(r["kind"])
     A = [r for r in reqs if r["phase"] == "A"]
@@ -53,7 +53,7 @@ def score(n, recs):
     la = [match(r, recs) for r in A]
     tot = [x["total_ms"] for x in la if x]
     c2 = (statistics.median(tot) if tot else None, max(tot) if tot else None, len(tot))
-    lb = [match(r, recs) if r["kind"] != "empty" else None for r in B]
+    lb = [match(r, recs) if r["status"] != 502 else None for r in B]
     present = sum(1 for x in lb if x)
     complete = sum(1 for x in lb if x and all(k in x and x[k] is not None for k in REQUIRED))
     c5 = sum(1 for x in la if x and x["model_calls"] == 2 and x["cache_hits"] == 0 and x["tokens"] > 0)
@@ -62,8 +62,14 @@ def score(n, recs):
     return dict(run=n, c1=c1, c2=c2, c4_present=present, c4_complete=complete, c5=c5, c5_detail=c5_detail,
                 non200=len(bad), statuses_b=[r["status"] for r in B])
 
-recs = parse_logs(["host_log_run.jsonl", "host_log_cold.jsonl"])
-print("log records:", len(recs))
-for n in (1, 2, 3, 4):
-    s = score(n, recs)
-    print(json.dumps(s))
+import sys
+if __name__ == "__main__":
+    prefix = sys.argv[1] if len(sys.argv) > 1 else ""
+    logs = sys.argv[2:] or ["host_log_run.jsonl", "host_log_cold.jsonl"]
+    recs = parse_logs(logs)
+    print("log records:", len(recs))
+    for n in (1, 2, 3, 4):
+        try:
+            print(json.dumps(score(n, recs, prefix)))
+        except FileNotFoundError:
+            pass

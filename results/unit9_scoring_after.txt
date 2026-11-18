@@ -1,0 +1,5 @@
+log records: 53
+{"run": 1, "c1": 5, "c2": [6440.5, 17768, 10], "c4_present": 0, "c4_complete": 0, "c5": 10, "c5_detail": [[2, 0, 824, "found"], [2, 0, 877, "found"], [2, 0, 847, "found"], [2,
+{"run": 2, "c1": 0, "c2": [null, null, 0], "c4_present": 0, "c4_complete": 0, "c5": 0, "c5_detail": [null, null, null, null, null, null, null, null, null, null], "non200": 21,
+{"run": 3, "c1": 5, "c2": [5982.0, 21940, 10], "c4_present": 10, "c4_complete": 10, "c5": 10, "c5_detail": [[2, 0, 859, "found"], [2, 0, 866, "found"], [2, 0, 842, "found"], [
+{"run": 4, "c1": 5, "c2": [7338.5, 14101, 10], "c4_present": 10, "c4_complete": 10, "c5": 10, "c5_detail": [[2, 0, 844, "found"], [2, 0, 874, "found"], [2, 0, 866, "found"], [
